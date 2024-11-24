@@ -1,0 +1,13 @@
+<h1>Items</h1>
+<form (submit)="addItem(title.value, content.value)">
+  <input #title placeholder="Title" required>
+  <textarea #content placeholder="Content" required></textarea>
+  <button type="submit">Add Item</button>
+</form>
+
+<ul>
+  <li *ngFor="let item of items">
+    <h2>{{ item.name }}</h2>
+    <p>{{ item.description }}</p>
+  </li>
+</ul>
