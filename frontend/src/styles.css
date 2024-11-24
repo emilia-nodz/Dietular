@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    background-color: #f2f2f2;
+    font-family: 'Playfire Display';
+}
+
+#top_nav {
+    overflow: hidden;
+    background-color: #6c7368;
+}
+  
+#top_nav ul{
+    list-style-type: none;
+}
+
+#top_nav li {
+    float: left;
+    color: #fefefe;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    font-size: 20px;
+}
+  
+#top_nav a:link {
+    color: #fefefe;
+    text-decoration: none;
+}
+  
+#top_nav a:visited {
+    color: #fefefe;
+    text-decoration: none;
+}
+  
+#top_nav .split {
+    float: right;
+}
