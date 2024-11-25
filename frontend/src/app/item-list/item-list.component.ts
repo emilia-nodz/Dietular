@@ -14,13 +14,12 @@ import {  Item } from '../item.model'
 export class ItemListComponent {
   items: Item[] = [];
 
-  constructor(private itemService: ItemService) {}
-
-  ngOnInit(): void {
+  constructor(private itemService: ItemService) {
     this.itemService.getItems().subscribe((data: Item[]) => {
       this.items = data; 
     });
   }
+
 
   addItem(name: string, description: string): void {
     const newItem: Item = {name, description} as Item;
