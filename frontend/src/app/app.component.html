@@ -1,67 +1,11 @@
-<div class="top_nav">
-  <nav>
-      <ul>
-        <li><a href="">Dietular</a></li>
-        <li>plan for a better tomorrow</li>
-        <li class="split"><a href="#">Calendar</a></li>
-        <li class="split"><a routerLink="/item-list-component" routerLinkActive="active" ariaCurrentWhenActive="page">Items</a></li>
-        <li class="split"><a >Meals</a></li>
-        <div class="dropdown">
-          <li ><button class="dropbtn">+</button></li>
-          <div class="dropdown-content">
-              <a href="#">New meal</a>
-              <a href="#">New product</a>
-              <a href="#">New allergen</a>
-          </div>
-        </div>
-      </ul>
-  </nav>
-</div>
+<app-header></app-header>
 
-<section class="main-content">
-    <h1>Welcome</h1>
-    <h2>Your plan for today's meals:</h2>
-</section>
+<main>
+    <router-outlet></router-outlet>
+  
+</main>
 
-<section class="steps-container">
-    <div class="step-box">
-      <h2>Breakfast</h2>
-      <div class="step-box2">
-        <p>tekst tekst dużo tekstutekst tekst dużo tekstutekst tekst dużo tekstutekst tekst dużo tekstutekst tekst dużo tekstutekst tekst dużo tekstutekst </p>
-      </div>
-        <!-- <div class="actions">
-            <button class="btn">@Html.ActionLink("Logowanie", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</button>
-            <button class="btn">@Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</button>
-        </div> -->
-    </div>
-    <div class="step-box">
-      <h2>Lunch</h2>
-      <div class="step-box2">
-      </div>
-    </div>
-    <div class="step-box">
-      <h2>Dinner</h2>
-      <div class="step-box2">
-        </div>
-    </div>
-</section>
-
+<app-footer></app-footer>
 <!-- Top navigation -->
-  <div class="topnav">
 
-    <!-- Centered link -->
-    <div class="topnav-centered">
-      <a href="#home" class="active">Home</a>
-    </div>
-    
-    <!-- Left-aligned links (default) -->
-    <a href="#news">© Dietular 2024</a>
-    
-    <!-- Right-aligned links -->
-    <div class="topnav-right">
-      <a href="#search">Search</a>
-      <a href="#about">About</a>
-    </div>
-    
-  </div>
 <!-- <app-item-list></app-item-list> -->
