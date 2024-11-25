@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from './item.model';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ItemService {
   private apiUrl = 'http://localhost:8000/app/item/';
 
