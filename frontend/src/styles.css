@@ -10,7 +10,7 @@ body {
     background-color: #6c7368;
 }
   
-#top_nav ul{
+#top_nav ul {
     list-style-type: none;
 }
 
@@ -57,6 +57,8 @@ body {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    top: 80px;
+    right: 350px;
 }
   
 #dropdown-content a {
