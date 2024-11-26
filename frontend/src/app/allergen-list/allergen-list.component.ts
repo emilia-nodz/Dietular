@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Allergen } from '../allergen.model';
+import { AllergenService } from '../allergen.service';
 
 @Component({
   selector: 'app-allergen-list',
@@ -8,5 +10,18 @@ import { Component } from '@angular/core';
   styleUrl: './allergen-list.component.css'
 })
 export class AllergenListComponent {
+  allergens: Allergen[] = [];
 
+  constructor(private allergenService: AllergenService) {
+    this.allergenService.getAllergens().subscribe((data: Allergen[]) => {
+      this.allergens = data; 
+    });
+  }
+
+  addAllergen(name: string, description: string): void {
+    const newAllergen: Allergen = {name} as Allergen;
+    this.allergenService.addAllergen(newAllergen).subscribe((allergen) => {
+      this.allergens.push(allergen);
+    }) 
+  }
 }
