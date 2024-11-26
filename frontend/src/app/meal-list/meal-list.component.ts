@@ -16,7 +16,7 @@ export class MealListComponent {
 
   constructor(private mealService: MealService) {
     this.mealService.getMeals().subscribe((data: Meal[]) => {
-      this.meals = data; 
+      this.meals = data;
     });
   }
 
@@ -25,6 +25,14 @@ export class MealListComponent {
     const newMeal: Meal = {name, description} as Meal;
     this.mealService.addMeal(newMeal).subscribe((meal) => {
       this.meals.push(meal);
-    }) 
+    })
+  }
+
+
+
+  checker: boolean = false;
+
+  showDetails() {
+    this.checker = !this.checker;
   }
 }

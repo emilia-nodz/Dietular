@@ -1,13 +1,20 @@
 <div class="main-container">
     <h1>Meal list</h1>
-  
+
       <ul>
         <div class="list-container">
           @for (meal of meals; track $index) {
             <li class="list-item-container">
               <p class="name">{{meal.name}}</p>
-              <p class="description">{{meal.description}}</p>
-              <button class="btn-view">View</button>
+              <p class="description">Description: {{meal.description}}</p>
+              <button class="btn-view" (click)="showDetails()">View</button>
+              @if(checker)
+              {
+                <p class="numberOfPortions">Number of portions: {{meal.numberOfPortions}}</p>
+                <p class="portionWeight">Weight of a portion: {{meal.portionWeight}}</p>
+                <p class="caloriesPerPortion">Calories per portion: {{meal.caloriesPerPortion}}</p>
+                <p class="items">Items in the  meal: {{meal.items}}</p>
+              }
             </li>
           }
         </div>

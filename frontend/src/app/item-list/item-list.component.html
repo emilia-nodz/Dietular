@@ -6,8 +6,18 @@
         @for (item of items; track $index) {
           <li class="list-item-container">
             <p class="name">{{item.name}}</p>
-            <p class="description">{{item.description}}</p>
-            <button class="btn-view">View</button>
+            <p class="description">Description: {{item.description}}</p>
+            <button
+              class="btn-view" (click)="showDetails()"  >View</button>
+             @if(checker)
+             {
+               <p class="weight">Weight: {{ item.weight }}</p>
+               <p class="calories">Calories: {{ item.calories }}</p>
+               <p class="carbohydrates">Carbohydrates: {{item.carbohydrates}}</p>
+               <p class="proteins">Proteins: {{item.proteins}}</p>
+               <p class="fats">Fats: {{item.fats}}</p>
+               <p class="allergens">Allergens: {{item.allergens}}</p>
+             }
           </li>
         }
       </div>
