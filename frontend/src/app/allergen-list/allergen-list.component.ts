@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Allergen } from '../allergen.model';
-import { AllergenService } from '../allergen.service';
+import { Allergen } from '../models/allergen.model';
+import { AllergenService } from '../services/allergen.service';
 
 @Component({
   selector: 'app-allergen-list',
