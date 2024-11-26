@@ -1,1 +1,15 @@
-<p>meal-list works!</p>
+<div class="main-container">
+    <h1>Meal list</h1>
+  
+      <ul>
+        <div class="list-container">
+          @for (meal of meals; track $index) {
+            <li class="list-item-container">
+              <p class="name">{{meal.name}}</p>
+              <p class="description">{{meal.description}}</p>
+              <button class="btn-view">View</button>
+            </li>
+          }
+        </div>
+      </ul>
+  </div>
