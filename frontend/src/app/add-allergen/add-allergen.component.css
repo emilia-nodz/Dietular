@@ -1,0 +1,25 @@
+.main-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 300px;
+    margin: 50px auto; 
+    padding: 10px 30px;
+    background-color: #cdd9c7;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container h1 {
+    color: #4B3629;
+    font-size: 48px;
+}
+
+.main-container .btn-add {
+    background-color: #ECE8E4;
+    color:#4B3629;
+    padding: 10px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    border-color: #4b3629;
+}

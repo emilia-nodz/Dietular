@@ -17,11 +17,4 @@ export class AllergenListComponent {
       this.allergens = data; 
     });
   }
-
-  addAllergen(name: string, description: string): void {
-    const newAllergen: Allergen = {name} as Allergen;
-    this.allergenService.addAllergen(newAllergen).subscribe((allergen) => {
-      this.allergens.push(allergen);
-    }) 
-  }
 }
