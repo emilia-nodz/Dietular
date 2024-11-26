@@ -6,7 +6,7 @@
           @for (meal of meals; track $index) {
             <li class="list-item-container">
               <p class="name">{{meal.name}}</p>
-              <p class="description">Description: {{meal.description}}</p>
+              <p class="description">{{meal.description}}</p>
               <button class="btn-view" (click)="showDetails()">View</button>
               @if(checker)
               {

@@ -6,7 +6,7 @@
         @for (item of items; track $index) {
           <li class="list-item-container">
             <p class="name">{{item.name}}</p>
-            <p class="description">Description: {{item.description}}</p>
+            <p class="description">{{item.description}}</p>
             <button
               class="btn-view" (click)="showDetails()"  >View</button>
              @if(checker)
