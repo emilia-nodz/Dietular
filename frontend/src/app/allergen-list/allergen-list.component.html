@@ -1,1 +1,14 @@
-<p>allergen-list works!</p>
+<div class="main-container">
+    <h1>Allergen list</h1>
+  
+      <ul>
+        <div class="list-container">
+          @for (allergen of allergens; track $index) {
+            <li class="list-allergen-container">
+              <p class="name">{{allergen.name}}</p>
+              <button class="btn-view">View</button>
+            </li>
+          }
+        </div>
+      </ul>
+  </div>

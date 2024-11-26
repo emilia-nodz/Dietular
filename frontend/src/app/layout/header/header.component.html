@@ -4,15 +4,16 @@
           <li><a href="">Dietular</a></li>
           <li>plan for a better tomorrow</li>
           <li class="split"><a href="#">Calendar</a></li>
-          <li class="split"><a routerLink="/item-list-component" >Items</a>
+          <li class="split"><a routerLink="/item-list-component" routerLinkActive="active" ariaCurrentWhenActive="page">Items</a>
           </li>
-          <li class="split"><a routerLink="/meal-list-component" >Meals</a></li>
+          <li class="split"><a routerLink="/meal-list-component" routerLinkActive="active" ariaCurrentWhenActive="page">Meals</a></li>
           <div class="dropdown">
             <li ><button class="dropbtn">+</button></li>
             <div class="dropdown-content">
                 <a href="#">New meal</a>
-                <a href="#">New item</a>
-                <a href="#">New allergen</a>
+                <a routerLink="/add-item-component" routerLinkActive="active" ariaCurrentWhenActive="page">New item</a>
+                <a routerLink="/add-allergen-component" routerLinkActive="active" ariaCurrentWhenActive="page">New allergen</a>
+                <a routerLink="/allergen-list-component" routerLinkActive="active" ariaCurrentWhenActive="page">Allergen list</a>
             </div>
           </div>
         </ul>

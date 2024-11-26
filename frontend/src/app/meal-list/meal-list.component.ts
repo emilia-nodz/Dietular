@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MealService } from '../meal.service';
-import {  Meal } from '../meal.model'
+import { MealService } from '../services/meal.service';
+import {  Meal } from '../models/meal.model'
 
 @Component({
   selector: 'app-meal-list',
@@ -19,7 +19,6 @@ export class MealListComponent {
       this.meals = data;
     });
   }
-
 
   addMeal(name: string, description: string): void {
     const newMeal: Meal = {name, description} as Meal;

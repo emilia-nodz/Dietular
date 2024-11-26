@@ -1,18 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ItemService } from '../item.service';
-import {  Item } from '../item.model'
-import {RouterLink} from '@angular/router';
+import { ItemService } from '../services/item.service';
+import {  Item } from '../models/item.model'
 
 @Component({
   selector: 'app-item-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule,FormsModule, ReactiveFormsModule],
   templateUrl: './item-list.component.html',
   styleUrl: './item-list.component.css'
 })
-
 export class ItemListComponent {
   items: Item[] = [];
 
@@ -22,19 +20,12 @@ export class ItemListComponent {
     });
   }
 
+
   addItem(name: string, description: string): void {
     const newItem: Item = {name, description} as Item;
     this.itemService.addItem(newItem).subscribe((item) => {
       this.items.push(item);
     })
   }
-
-
-  checker: boolean = false;
-
-  showDetails() {
-    this.checker = !this.checker;
-  }
-
 
 }
