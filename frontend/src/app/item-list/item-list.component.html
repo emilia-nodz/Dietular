@@ -1,13 +1,15 @@
-<h1>Items</h1>
-<form (submit)="addItem(title.value, content.value)">
-  <input #title placeholder="Title" required>
-  <textarea #content placeholder="Content" required></textarea>
-  <button type="submit">Add Item</button>
-</form>
+<div class="main-container">
+  <h1>Item list</h1>
 
-<ul>
-  <li *ngFor="let item of items">
-    <h2>{{ item.name }}</h2>
-    <p>{{ item.description }}</p>
-  </li>
-</ul>
+    <ul>
+      <div class="list-container">
+        @for (item of items; track $index) {
+          <li class="list-item-container">
+            <p class="name">{{item.name}}</p>
+            <p class="description">{{item.description}}</p>
+            <button class="btn-view">View</button>
+          </li>
+        }
+      </div>
+    </ul>
+</div>
