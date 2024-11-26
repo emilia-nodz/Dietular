@@ -17,32 +17,33 @@
     font-weight: lighter;
 }
 
-.steps-container {
+.days-container {
     display: flex;
     justify-content: center;
     padding: 30px 20px;
+    height: 428px;
     gap: 20px;
     border-radius: 8px;
 }
 
-.step-box {
+.day-box {
     background-color: #cdd9c7;
-    padding: 20px;
     border-radius: 8px;
-    flex: 1;
     color: #4B3629;
     text-align: left;
 }
 
-.step-box h2 {
+.day-box h2 {
+    padding: 2px 5px;
     font-size: 36px;
 }
 
-.step-box2 {
+.day-box2 {
     background-color: #ece8e4;
-    padding: 20px;
+    height: 314px;
+    width: 308px;
+    padding: 5px 5px;
     border-radius: 8px;
-    flex: 1;
     color: #4B3629;
     font-size:  24px ;
 }
