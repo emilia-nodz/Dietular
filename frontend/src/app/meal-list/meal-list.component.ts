@@ -20,7 +20,6 @@ export class MealListComponent {
     });
   }
 
-
   addMeal(name: string, description: string): void {
     const newMeal: Meal = {name, description} as Meal;
     this.mealService.addMeal(newMeal).subscribe((meal) => {
