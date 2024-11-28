@@ -20,14 +20,6 @@ export class ItemListComponent {
     });
   }
 
-
-  addItem(name: string, description: string): void {
-    const newItem: Item = {name, description} as Item;
-    this.itemService.addItem(newItem).subscribe((item) => {
-      this.items.push(item);
-    })
-  }
-
   checker: boolean = false;
 
   showDetails() {
