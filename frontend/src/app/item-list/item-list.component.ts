@@ -28,10 +28,12 @@ export class ItemListComponent {
     })
   }
 
-  checker: boolean = false;
+checker: number = 0;
 
-  showDetails() {
-    this.checker = !this.checker;
+  showDetails(x: number) {
+    this.checker = x;
+
   }
 
 }
+

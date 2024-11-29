@@ -8,9 +8,10 @@
             <p class="name">{{item.name}}</p>
             <p class="description">{{item.description}}</p>
             <button
-              class="btn-view" (click)="showDetails()"  >View</button>
-             @if(checker)
+              class="btn-view" (click)="showDetails(item.id)"  >View</button>
+             @if(checker == item.id)
              {
+
                <p class="weight">Weight: {{ item.weight }}</p>
                <p class="calories">Calories: {{ item.calories }}</p>
                <p class="carbohydrates">Carbohydrates: {{item.carbohydrates}}</p>
