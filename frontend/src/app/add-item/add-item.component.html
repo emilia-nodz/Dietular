@@ -1,10 +1,22 @@
 <div class="main-container">
-    <h1>Add item</h1>
+  <h1>Add item</h1>
+  <div class="form-container">
     <form>
-        <input #title placeholder="Title" required>
-        <textarea #content placeholder="Content" required></textarea>
-        <button type="submit">Add Item</button>
+      <input type="text" id="title" placeholder="Nazwa" required>
+      <textarea type="text" id="content" placeholder="Opis" required></textarea>
+      <input type="number" id="weight" placeholder="Waga (g)" required>
+      <input type="number" id="calories" placeholder="Kalorie (kCal)" required>
+      <input type="number" id="carbs" placeholder="Węglowodany (g)" required>
+      <input type="number" id="proteins" placeholder="Białka (g)" required>
+      <input type="number" id="fats" placeholder="Tłuszcze (g)" required>
+      <label for="allergens">Alergeny:</label>
+        <select id="allergen" multiple>
+          @for(alle of allergens; track $index) {
+            <option value="allergen-val">{{alle.name}}</option>
+          }
+          
+          </select>
+        <button type="submit" id="btn-view">Add Item</button>
       </form>
-      
-
+  </div>
 </div>
