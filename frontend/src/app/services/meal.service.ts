@@ -19,4 +19,6 @@ export class MealService {
   addMeal(Meal: Meal): Observable<Meal> {
     return this.http.post<Meal>(this.apiUrl, Meal);
   }
+
+  
 }

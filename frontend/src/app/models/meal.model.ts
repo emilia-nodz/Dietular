@@ -6,4 +6,5 @@ export interface Meal {
     numberOfPortions: number,
     portionWeight: number,
     caloriesPerPortion: number,
+    meal_image: string,
 }
