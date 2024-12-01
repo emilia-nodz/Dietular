@@ -2,21 +2,52 @@
   <h1>Add item</h1>
   <div class="form-container">
     <form>
-      <input type="text" id="title" placeholder="Nazwa" required>
-      <textarea type="text" id="content" placeholder="Opis" required></textarea>
-      <input type="number" id="weight" placeholder="Waga (g)" required>
-      <input type="number" id="calories" placeholder="Kalorie (kCal)" required>
-      <input type="number" id="carbs" placeholder="Węglowodany (g)" required>
-      <input type="number" id="proteins" placeholder="Białka (g)" required>
-      <input type="number" id="fats" placeholder="Tłuszcze (g)" required>
-      <label for="allergens">Alergeny:</label>
-        <select id="allergen" multiple>
+      <div class="form-thing">
+        <label class="label">Nazwa</label>
+        <input type="text" class="title" placeholder="Nazwa" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Opis</label>
+        <input type="text" class="description" placeholder="Opis" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Waga</label>
+        <input type="number" min="0" class="weight" placeholder="Waga (g)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Kalorie</label>
+        <input type="number" min="0" class="calories" placeholder="Kalorie (kCal)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Węglowodany</label>
+        <input type="number" min="0" class="carbs" placeholder="Węglowodany (g)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Białka</label>
+        <input type="number" min="0" class="proteins" placeholder="Białka (g)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Tłuszcze</label>
+        <input type="number" min="0" class="fats" placeholder="Tłuszcze (g)" required>
+      </div>
+
+      <div class="form-thing"><label for="allergens" class="label">Alergeny (opcjonalnie):</label>
+        <select class="allergen" multiple>
           @for(alle of allergens; track $index) {
             <option value="allergen-val">{{alle.name}}</option>
           }
-          
-          </select>
-        <button type="submit" id="btn-view">Add Item</button>
-      </form>
+        </select>
+      </div>
+
+      <div class="form-thing">
+      <button type="submit" class="btn-view">Add Item</button>
+    </div>
+    </form>
   </div>
 </div>
