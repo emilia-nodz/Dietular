@@ -7,6 +7,16 @@ class AllergenSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ItemSerializer(serializers.ModelSerializer):
+    allergens = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Allergen.objects.all(),
+        write_only=True
+    )
+    allergen_details = AllergenSerializer(
+        many=True,
+        source='allergens',
+        read_only=True
+    )
     class Meta:
         model = Item
         fields = '__all__'
