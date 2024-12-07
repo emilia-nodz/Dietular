@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../services/item.service';
 import {  Item } from '../models/item.model'
-import { Allergen } from '../models/allergen.model';
 
 @Component({
   selector: 'app-item-list',
@@ -20,12 +19,6 @@ export class ItemListComponent {
       this.items = data;
     });
   }
-
-  // getAllergens() {
-  //   for(let i = 0; i < this.items.length; i++) {
-  //     this.itemAllergens.push(this.items[i].allergens);
-  //   }
-  // }
     
   checker: boolean = false;
 
