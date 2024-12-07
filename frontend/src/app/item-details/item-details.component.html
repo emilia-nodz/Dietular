@@ -1,6 +1,8 @@
-<p class="weight">Weight: {{ items[Index].weight }}</p>
-<p class="calories">Calories: {{ items[Index].calories }}</p>
-<p class="carbohydrates">Carbohydrates: {{items[Index].carbohydrates}}</p>
-<p class="proteins">Proteins: {{items[Index].proteins}}</p>
-<p class="fats">Fats: {{items[Index].fats}}</p>
-<p class="allergens">Allergens: {{items[Index].allergens}}</p>
+@if(index !== undefined) {
+    <p class="weight">Weight: {{ items[index].weight }}</p>
+    <p class="calories">Calories: {{ items[index].calories }}</p>
+    <p class="carbohydrates">Carbohydrates: {{items[index].carbohydrates}}</p>
+    <p class="proteins">Proteins: {{items[index].proteins}}</p>
+    <p class="fats">Fats: {{items[index].fats}}</p>
+    <p class="allergens">Allergens: {{items[index].allergens}}</p>
+}

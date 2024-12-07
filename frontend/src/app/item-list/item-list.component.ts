@@ -30,13 +30,13 @@ export class ItemListComponent {
     })
   }
 
-@Output() Interest: EventEmitter<number> = new EventEmitter();
+@Output() interest: EventEmitter<number> = new EventEmitter();
 
 checker: number = 0;
 
   showDetails(x: number) {
     this.checker = x;
-    this.Interest.emit(x);
+    this.interest.emit(x);
   }
 
 }
