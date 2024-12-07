@@ -25,7 +25,7 @@ class Meal(models.Model):
     numberOfPortions = models.IntegerField()
     portionWeight = models.IntegerField()
     caloriesPerPortion = models.IntegerField()
-    meal_image = models.ImageField(upload_to='meal_images/', default='media/meal_images/meal_icon.jpg')
+    mealImage = models.ImageField(upload_to='meal_images/', default='media/meal_images/meal_icon.jpg')
 
     class Meta:
         verbose_name = "Meal"  # Singular form for display in admin panel
@@ -61,7 +61,7 @@ class Item(models.Model):
     proteins = models.IntegerField()
     fats = models.IntegerField()
     # Allows multiple allergens per product and vice versa
-    allergens = models.ManyToManyField(Allergen, related_name='items')
+    allergens = models.ManyToManyField(Allergen, related_name='items', blank=True, null=True)
 
     class Meta:
         verbose_name = "Item"  # Singular form for display in admin panel

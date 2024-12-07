@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Allergen, Item
+from .models import Allergen, Item, Meal
 
 # Admin customization for Allergen
 class AllergenAdmin(admin.ModelAdmin):
@@ -30,3 +30,4 @@ class MealAdmin(admin.ModelAdmin):
 # Register the models with the admin site
 admin.site.register(Allergen, AllergenAdmin)
 admin.site.register(Item, ItemAdmin)
+admin.site.register(Meal, MealAdmin)
