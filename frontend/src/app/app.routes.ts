@@ -5,6 +5,7 @@ import { MealListComponent } from './meal-list/meal-list.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { AllergenListComponent } from './allergen-list/allergen-list.component';
 import { AddAllergenComponent } from './add-allergen/add-allergen.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 export const routes: Routes = [
@@ -14,4 +15,5 @@ export const routes: Routes = [
     { path: 'add-item-component', component: AddItemComponent },
     { path: 'allergen-list-component', component: AllergenListComponent },
     { path: 'add-allergen-component', component: AddAllergenComponent},
+    { path: 'calendar-component', component: CalendarComponent},
 ];

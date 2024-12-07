@@ -1,0 +1,30 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button (click)="prevMonth()">&lt;</button>
+    <span>{{ currentYear }} - {{ currentMonth + 1 }}</span>
+    <button (click)="nextMonth()">&gt;</button>
+  </div>
+
+  <table class="calendar-table">
+    <thead>
+    <tr>
+      <th>Sun</th>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let week of weeks">
+      <td *ngFor="let day of week"
+          [class.today]="isToday(day)"
+          [class.current-month]="isCurrentMonth(day)">
+        <span *ngIf="day">{{ day.getDate() }}</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
