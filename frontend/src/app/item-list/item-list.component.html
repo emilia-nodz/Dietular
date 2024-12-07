@@ -7,11 +7,10 @@
           <li class="list-item-container">
             <p class="name">{{item.name}}</p>
             <p class="description">{{item.description}}</p>
-            <button
-              class="btn-view" (click)="showDetails(item.id)"  >View</button>
-             @if(checker == item.id)
-             { <app-item-details [index]="item.id"/>
-             }
+            <button class="btn-view" (click)="showDetails(item.id)"> View </button>
+            @if(checker == item.id) { 
+              <app-item-details [index]="item.id"/>
+            }
           </li>
         }
       </div>

@@ -24,4 +24,6 @@ export class AddAllergenComponent {
       this.allergens.push(allergen);
     }) 
   }
+
+  
 }

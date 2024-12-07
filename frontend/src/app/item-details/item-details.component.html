@@ -4,5 +4,9 @@
     <p class="carbohydrates">Carbohydrates: {{items[index].carbohydrates}}</p>
     <p class="proteins">Proteins: {{items[index].proteins}}</p>
     <p class="fats">Fats: {{items[index].fats}}</p>
-    <p class="allergens">Allergens: {{items[index].allergens}}</p>
+    <p class="allergens">Allergens:
+        @for(allergen of items[index].allergen_details; track $index) {
+            {{allergen.name}}
+        }
+    </p>
 }

@@ -26,30 +26,33 @@ export class AddItemComponent {
     });
   }
 
-  addItem(name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number, allergens: string[]): void {
-    const newItem: Item = {name, description, weight, calories, carbohydrates, proteins, fats, allergens} as Item;
-    this.itemService.addItem(newItem).subscribe((item) => {
-      this.items.push(item);
-    }) 
-  }
+  // addItem(name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number, allergens: string[]): void {
+  //   const newItem: Item = {name, description, weight, calories, carbohydrates, proteins, fats, allergens} as Item;
+  //   this.itemService.addItem(newItem).subscribe((item) => {
+  //     this.items.push(item);
+  //   }) 
+  // }
 
-  onSubmit(
-    title: string,
-    content: string,
-    weight: string,
-    cal: string,
-    carbs: string,
-    proteins: string,
-    fats: string,
-    allergens: string[]
-  ): void {
-    const parsedWeight = parseFloat(weight);
-    const parsedCalories = parseFloat(cal);
-    const parsedCarbs = parseFloat(carbs);
-    const parsedProteins = parseFloat(proteins);
-    const parsedFats = parseFloat(fats);
+  // getSelectedAllergens(selectElement: HTMLSelectElement): string[] {
+  //   const selectedOptions = Array.from(selectElement.selectedOptions); // Get selected options
+  //   return selectedOptions.map((option) => option.value); // Map to an array of values
+  // }
   
-    this.addItem(title, content, parsedWeight, parsedCalories, parsedCarbs, parsedProteins, parsedFats, allergens);
-  }
+  // addItem(
+  //   name: string,
+  //   description: string,
+  //   weight: number,
+  //   calories: number,
+  //   carbs: number,
+  //   proteins: number,
+  //   fats: number,
+  //   allergens: string[]
+  // ): void {
+  //   const newItem: Item = { name, description, weight, calories, carbohydrates: carbs, proteins, fats, allergens } as Item;
+  //   console.log(newItem);
+  //   this.itemService.addItem(newItem).subscribe((item) => {
+  //         this.items.push(item);
+  //       }) 
+  // }
   
 }

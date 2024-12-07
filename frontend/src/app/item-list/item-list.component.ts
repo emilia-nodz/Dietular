@@ -14,7 +14,7 @@ import { ItemDetailsComponent } from '../item-details/item-details.component';
   styleUrl: './item-list.component.css'
 })
 export class ItemListComponent {
-    items: Item[] = [];
+  items: Item[] = [];
 
   constructor(private itemService: ItemService) {
     this.itemService.getItems().subscribe((data: Item[]) => {

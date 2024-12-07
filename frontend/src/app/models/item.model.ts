@@ -1,3 +1,5 @@
+import { Allergen } from "../models/allergen.model"
+
 export interface Item {
     id: number,
     name: string,
@@ -7,5 +9,5 @@ export interface Item {
     carbohydrates: number,
     proteins: number,
     fats: number,
-    allergens: string[]
+    allergen_details: Allergen[]
 }
