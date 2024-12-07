@@ -22,15 +22,8 @@ export class ItemListComponent {
     });
   }
 
-
-  addItem(name: string, description: string): void {
-    const newItem: Item = {name, description} as Item;
-    this.itemService.addItem(newItem).subscribe((item) => {
-    this.items.push(item);
-    })
-  }
-
 @Output() interest: EventEmitter<number> = new EventEmitter();
+
 
 checker: number = 0;
 

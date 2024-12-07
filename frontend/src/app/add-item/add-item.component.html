@@ -1,10 +1,53 @@
 <div class="main-container">
-    <h1>Add item</h1>
+  <h1>Add item</h1>
+  <div class="form-container">
     <form>
-        <input #title placeholder="Title" required>
-        <textarea #content placeholder="Content" required></textarea>
-        <button type="submit">Add Item</button>
-      </form>
-      
+      <div class="form-thing">
+        <label class="label">Nazwa</label>
+        <input type="text" class="title" placeholder="Nazwa" required>
+      </div>
 
+      <div class="form-thing">
+        <label class="label">Opis</label>
+        <input type="text" class="description" placeholder="Opis" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Waga</label>
+        <input type="number" min="0" class="weight" placeholder="Waga (g)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Kalorie</label>
+        <input type="number" min="0" class="calories" placeholder="Kalorie (kCal)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Węglowodany</label>
+        <input type="number" min="0" class="carbs" placeholder="Węglowodany (g)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Białka</label>
+        <input type="number" min="0" class="proteins" placeholder="Białka (g)" required>
+      </div>
+
+      <div class="form-thing">
+        <label class="label">Tłuszcze</label>
+        <input type="number" min="0" class="fats" placeholder="Tłuszcze (g)" required>
+      </div>
+
+      <div class="form-thing"><label for="allergens" class="label">Alergeny (opcjonalnie):</label>
+        <select class="allergen" multiple>
+          @for(alle of allergens; track $index) {
+            <option value="allergen-val">{{alle.name}}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-thing">
+      <button type="submit" class="btn-view">Add Item</button>
+    </div>
+    </form>
+  </div>
 </div>
