@@ -1,16 +1,26 @@
-<div class="day-detail-container" *ngIf="day">
-  <h2>Day Details for {{ day.date | date:'fullDate' }}</h2>
+@if (day){
+<div class="day-detail-container">
+  <h3>Details for {{ day.date | date: 'fullDate' }}</h3>
   <div class="section">
-    <h3>Items</h3>
+    <h4>Items</h4>
     <ul>
-      <li *ngFor="let item of day.items">{{ item }}</li>
+      @for (item of day.items; track item){
+      <li>{{item}}</li>
+      } @empty{
+      @for (meal of day.meals; track meal){
+      <li>{{meal}}</li>
+      } @empty{
+      <li>There are no meals</li>
+      }
+      }
     </ul>
   </div>
 
   <div class="section">
-    <h3>Meals</h3>
+    <h4>Meals</h4>
     <ul>
       <li *ngFor="let meal of day.meals">{{ meal }}</li>
     </ul>
   </div>
 </div>
+}

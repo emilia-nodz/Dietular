@@ -48,8 +48,10 @@
   }
 
   .calendar-table .today {
-    background: #ece8e4;
+    background: #aaa;
     font-weight: bold;
+    border-radius: 100px;
+
   }
 
   .calendar-table .current-month {
@@ -58,6 +60,11 @@
 
   .calendar-table td:not(.current-month) {
     color: #aaa;
+  }
+
+  .selectedDay {
+      border-radius: 100px;
+      background-color: #ece8e4;
   }
 
 .day-details {
