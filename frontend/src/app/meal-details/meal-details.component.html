@@ -1,0 +1,8 @@
+@if(index !== undefined) {
+                <p class="numberOfPortions">Number of portions: {{meals[index].numberOfPortions}}</p>
+                <p class="portionWeight">Weight of a portion: {{meals[index].portionWeight}}</p>
+                <p class="caloriesPerPortion">Calories per portion: {{meals[index].caloriesPerPortion}}</p>
+                <p class="items">Items in the  meal: {{meals[index].items}}</p>
+                <p class="items">url: {{meals[index].meal_image}}</p>
+                <img src="meal.meal_image" alt="{{ meals[index].name }}"/>
+}
