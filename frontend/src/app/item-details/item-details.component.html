@@ -5,8 +5,11 @@
     <p class="proteins">Proteins: {{items[index].proteins}}</p>
     <p class="fats">Fats: {{items[index].fats}}</p>
     <p class="allergens">Allergens:
+        <ol>
+
+       
         @for(allergen of items[index].allergen_details; track $index) {
-            {{allergen.name}}
+           <li>{{allergen.name}}</li> 
         }
-    </p>
+    </ol>
 }

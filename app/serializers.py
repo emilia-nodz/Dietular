@@ -27,7 +27,16 @@ class DaySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MealSerializer(serializers.ModelSerializer):
+    items = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Item.objects.all(),
+        write_only=True
+    )
+    item_details = ItemSerializer(
+        many=True,
+        source='items',
+        read_only=True
+    )
     class Meta:
         model = Meal
         fields = '__all__'
-
