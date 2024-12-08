@@ -13,13 +13,13 @@ import {  Item } from '../models/item.model'
 })
 export class ItemListComponent {
   items: Item[] = [];
-
   constructor(private itemService: ItemService) {
     this.itemService.getItems().subscribe((data: Item[]) => {
+      console.log(data);  
       this.items = data;
     });
   }
-
+    
   checker: boolean = false;
 
   showDetails() {

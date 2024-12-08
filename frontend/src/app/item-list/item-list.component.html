@@ -16,7 +16,12 @@
                <p class="carbohydrates">Carbohydrates: {{item.carbohydrates}}</p>
                <p class="proteins">Proteins: {{item.proteins}}</p>
                <p class="fats">Fats: {{item.fats}}</p>
-               <p class="allergens">Allergens: {{item.allergens}}</p>
+               <p class="allergens">Allergens:</p>
+
+               @for(allergen of item.allergen_details; track $index) {
+                  {{allergen.name}}
+               }
+               
              }
           </li>
         }
