@@ -1,0 +1,16 @@
+<div class="day-detail-container" *ngIf="day">
+  <h2>Day Details for {{ day.date | date:'fullDate' }}</h2>
+  <div class="section">
+    <h3>Items</h3>
+    <ul>
+      <li *ngFor="let item of day.items">{{ item }}</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Meals</h3>
+    <ul>
+      <li *ngFor="let meal of day.meals">{{ meal }}</li>
+    </ul>
+  </div>
+</div>
