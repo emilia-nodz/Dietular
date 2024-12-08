@@ -1,10 +1,5 @@
 .day-detail-container {
-  border: 1px solid #ccc;
   padding: 1em;
   font-family: Arial, sans-serif;
-  max-width: 300px;
-}
-
-.section {
-  margin-top: 1em;
+  max-width: 100%;
 }

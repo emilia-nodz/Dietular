@@ -11,5 +11,5 @@ import { Day } from '../models/day.model';
   styleUrl: './day-detail.component.css'
 })
 export class DayDetailComponent {
-  @Input() day!: Day;
+  @Input() day: Day | null = null;
 }

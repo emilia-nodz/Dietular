@@ -18,37 +18,23 @@
       </tr>
     </thead>
     <tbody>
-    @for (week of weeks; track week){
+      @for (week of weeks; track week){
       <tr class="week">
         @for (day of week; track day){
-          <td class="day"
-              [class.today]="isToday(day)"
-              [class.current-month]="isCurrentMonth(day)"
-              (click)="dayClick(day)">
-            <span>{{ day?.getDate() }}</span>
-          </td>
+        <td class="day"
+            [class.selectedDay]="isSelectedDay(day)"
+            [class.today]="isToday(day)"
+            [class.current-month]="isCurrentMonth(day)"
+            (click)="dayClick(day)">
+          <span>{{ day?.getDate() }}</span>
+        </td>
         }
       </tr>
-    }
+      }
     </tbody>
   </table>
   @if (selectedDay){
-  <div class="day-details">
-    <h3>Details for {{ selectedDay.date | date: 'fullDate' }}</h3>
-    <ul>
-      @for (item of selectedDay.items; track item){
-      <li>Item: {{item}}</li>
-      } @empty{
-      <li>There are no items</li>
-      }
-      @for (meal of selectedDay.meals; track meal){
-      <li>Meal: {{meal}}</li>
-      } @empty{
-      <li>There are no meals</li>
-      }
-    </ul>
-  </div>
+  <app-day-detail [day]="selectedDay"></app-day-detail>
   }
-
 </div>
 

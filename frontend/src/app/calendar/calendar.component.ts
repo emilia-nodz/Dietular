@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Day } from '../models/day.model';
+import { DayDetailComponent } from '../day-detail/day-detail.component';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DayDetailComponent],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
@@ -60,6 +61,10 @@ export class CalendarComponent implements OnInit {
     return !!day && day.getMonth() === this.currentMonth;
   }
 
+  isSelectedDay(day: Date | null): boolean {
+    if (!day || !this.selectedDay) return false;
+    return day.getTime() === this.selectedDay.date.getTime();
+  }
   prevMonth(): void {
     this.currentMonth--;
     if (this.currentMonth < 0) {
