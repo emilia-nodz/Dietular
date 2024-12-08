@@ -7,24 +7,48 @@
 
   <table class="calendar-table">
     <thead>
-    <tr>
-      <th>Sun</th>
-      <th>Mon</th>
-      <th>Tue</th>
-      <th>Wed</th>
-      <th>Thu</th>
-      <th>Fri</th>
-      <th>Sat</th>
-    </tr>
+      <tr class="week">
+        <th class="day">Sun</th>
+        <th class="day">Mon</th>
+        <th class="day">Tue</th>
+        <th class="day">Wed</th>
+        <th class="day">Thu</th>
+        <th class="day">Fri</th>
+        <th class="day">Sat</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let week of weeks">
-      <td *ngFor="let day of week"
-          [class.today]="isToday(day)"
-          [class.current-month]="isCurrentMonth(day)">
-        <span *ngIf="day">{{ day.getDate() }}</span>
-      </td>
-    </tr>
+    @for (week of weeks; track week){
+      <tr class="week">
+        @for (day of week; track day){
+          <td class="day"
+              [class.today]="isToday(day)"
+              [class.current-month]="isCurrentMonth(day)"
+              (click)="dayClick(day)">
+            <span>{{ day?.getDate() }}</span>
+          </td>
+        }
+      </tr>
+    }
     </tbody>
   </table>
+  @if (selectedDay){
+  <div class="day-details">
+    <h3>Details for {{ selectedDay.date | date: 'fullDate' }}</h3>
+    <ul>
+      @for (item of selectedDay.items; track item){
+      <li>Item: {{item}}</li>
+      } @empty{
+      <li>There are no items</li>
+      }
+      @for (meal of selectedDay.meals; track meal){
+      <li>Meal: {{meal}}</li>
+      } @empty{
+      <li>There are no meals</li>
+      }
+    </ul>
+  </div>
+  }
+
 </div>
+

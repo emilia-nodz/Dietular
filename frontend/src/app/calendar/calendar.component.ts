@@ -1,5 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Day } from '../models/day.model';
+
 @Component({
   selector: 'app-calendar',
   standalone: true,
@@ -8,10 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent implements OnInit {
+  @Output() daySelected = new EventEmitter<Day>();
   currentDate = new Date();
   currentMonth!: number;
   currentYear!: number;
   weeks: (Date | null)[][] = [];
+  selectedDay: Day | null = null;
 
   ngOnInit() {
     this.currentMonth = this.currentDate.getMonth();
@@ -72,5 +76,16 @@ export class CalendarComponent implements OnInit {
       this.currentYear++;
     }
     this.generateCalendar(this.currentYear, this.currentMonth);
+  }
+  dayClick(day: Date | null): void {
+    if (day) {
+      this.selectedDay = {
+        id: day.getDate(), // Example ID based on the day
+        date: day,
+        items: ['Item 1', 'Item 2'], // Replace with real data if available
+        meals: ['Breakfast', 'Lunch', 'Dinner'] // Replace with real data
+      };
+      this.daySelected.emit(this.selectedDay);
+    }
   }
 }
