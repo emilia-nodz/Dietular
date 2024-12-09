@@ -1,10 +1,18 @@
 <div class="main-container">
     <h1>Add allergen</h1>
-    <form (submit)="addAllergen(title.value)">
-        <input #title placeholder="Title" required>
-        <button type="submit" class="btn-add">Add allergen</button>
-    </form>
-      
-
+    <div class="form-container">
+        <form [formGroup]="formModel" (ngSubmit)="submitForm()">
+            <div class="form-thing">
+                <label>Name</label>
+                <input type="text" formControlName="name" placeholder="Name">
+                @if(formModel.controls['name'].errors?.['required']){
+                    <span class="error">Name is required</span>
+                }
+            </div>
+            <div class="form-thing">
+                <input [disabled]="!formModel.valid" type="submit" value="Add allergen" class="btn-view">
+            </div>  
+        </form>
+    </div>
 </div>
 

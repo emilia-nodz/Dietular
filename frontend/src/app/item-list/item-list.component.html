@@ -7,22 +7,10 @@
           <li class="list-item-container">
             <p class="name">{{item.name}}</p>
             <p class="description">{{item.description}}</p>
-            <button
-              class="btn-view" (click)="showDetails()"  >View</button>
-             @if(checker)
-             {
-               <p class="weight">Weight: {{ item.weight }}</p>
-               <p class="calories">Calories: {{ item.calories }}</p>
-               <p class="carbohydrates">Carbohydrates: {{item.carbohydrates}}</p>
-               <p class="proteins">Proteins: {{item.proteins}}</p>
-               <p class="fats">Fats: {{item.fats}}</p>
-               <p class="allergens">Allergens:</p>
-
-               @for(allergen of item.allergen_details; track $index) {
-                  {{allergen.name}}
-               }
-               
-             }
+            <button class="btn-view" (click)="showDetails(item.id)"> View </button>
+            @if(checker == item.id) { 
+              <app-item-details [index]="item.id"/>
+            }
           </li>
         }
       </div>
