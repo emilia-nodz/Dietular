@@ -28,8 +28,19 @@ export class ItemListComponent {
 checker: number = 0;
 
   showDetails(x: number) {
-    this.checker = x;
+    if(this.checker!=x) 
+    {
+       this.checker = x;
     this.interest.emit(x);
+    }
+   else 
+   {
+    this.checker = -1;
+   }
+  }
+
+  Delete(itemid: number) {
+  console.log("Zaraz usuniemy " + itemid)
   }
 
 }
