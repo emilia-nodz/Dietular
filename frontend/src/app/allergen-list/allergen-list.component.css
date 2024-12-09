@@ -34,13 +34,3 @@
 .main-container .description {
     font-size: 20px;
 }
-
-.main-container .btn-view {
-    background-color: #ECE8E4;
-    color:#4B3629;
-    padding: 10px 10px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 8px;
-    border-color: #4b3629;
-}

@@ -14,6 +14,7 @@ export class AddAllergenComponent {
   allergens: Allergen[] = [];
 
   formModel: FormGroup;
+  router: any;
 
   constructor(private allergenService: AllergenService) {
     this.allergenService.getAllergens().subscribe((data: Allergen[]) => {
