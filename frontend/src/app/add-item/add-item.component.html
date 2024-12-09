@@ -33,9 +33,9 @@
       <div class="form-thing">
         <label class="label">Calories</label>
         <input type="number" class="calories" placeholder="Calories (kCal)" formControlName="cal">
-        @if(formModel.controls['weight'].errors?.['required']) {
+        @if(formModel.controls['cal'].errors?.['required']) {
           <span class="error">Value is required</span>
-        } @else if(formModel.controls['weight'].errors?.['min']!=null) {
+        } @else if(formModel.controls['cal'].errors?.['min']!=null) {
           <span class="error">Value must be a number grater than 0</span>
         }
       </div>

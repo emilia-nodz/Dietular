@@ -7,7 +7,6 @@ class AllergenSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ItemSerializer(serializers.ModelSerializer):
-
     allergens = serializers.PrimaryKeyRelatedField(
         many=True,
         queryset=Allergen.objects.all(),
@@ -35,7 +34,6 @@ class MealSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Meal
-
         fields = '__all__'
 
 class DaySerializer(serializers.ModelSerializer):

@@ -9,7 +9,7 @@ export interface Meal {
     caloriesPerPortion: number,
 }
 
-export interface Meal {
+export interface MealToAdd {
     id: number,
     items: number[],
     name: string,
