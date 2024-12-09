@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../services/item.service';
 import { Item } from '../models/item.model'
@@ -19,8 +19,9 @@ export class AddItemComponent {
   allergens: Allergen[] = [];
 
   formModel: FormGroup;
+  formBuilder: any;
 
-  constructor(private itemService: ItemService, private allergenService: AllergenService) {
+  constructor(private itemService: ItemService, private allergenService: AllergenService, private fb: FormBuilder) {
     this.allergenService.getAllergens().subscribe((alData: Allergen[]) => {
       this.allergens = alData;
     })
@@ -28,54 +29,48 @@ export class AddItemComponent {
       this.items = data; 
     });
 
-    this.formModel = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      desc: new FormControl('', [Validators.required]),
-      weight: new FormControl('', [Validators.required, positiveNumberValidator]),
-      cal: new FormControl('', [Validators.required,positiveNumberValidator]),
-      protein: new FormControl('', [Validators.required,positiveNumberValidator]),
-      carbs: new FormControl('', [Validators.required,positiveNumberValidator]),
-      fats: new FormControl('', [Validators.required,positiveNumberValidator]),
-      allergens: new FormControl([], [Validators.required])
-    })
+    this.formModel = this.fb.group({
+      name: ['', Validators.required],
+      desc: ['', Validators.required],
+      weight: ['', Validators.required],
+      cal: ['', Validators.required],
+      protein: ['', Validators.required],
+      carbs: ['', Validators.required],
+      fats: ['', Validators.required],
+      allergens: [[],Validators.required],
+    });
   }
 
-  addItem(name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number, allergen_details: Allergen[]): void {
-    const newItem: Item = {name, description, weight, calories, carbohydrates, proteins, fats, allergen_details} as Item;
+  addItem(allergen_details: Allergen[], name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number): void {
+    const newItem: Item = {allergen_details, name, description, weight, calories, carbohydrates, proteins, fats } as Item;
+    console.log(newItem);
     this.itemService.addItem(newItem).subscribe((item) => {
+      console.log(newItem);
       this.items.push(item);
-    }) 
+    });
   }
 
-  // getSelectedAllergens(selectElement: HTMLSelectElement): string[] {
-  //   const selectedOptions = Array.from(selectElement.selectedOptions); // Get selected options
-  //   return selectedOptions.map((option) => option.value); // Map to an array of values
-  // }
   
   submitForm() {
+
     const formValue = this.formModel.value;
 
-    // Extract form values
-    const { name, desc, weight, cal, protein, carbs, fats, allergens } = formValue;
+    // Find full allergen objects based on selected IDs
+    const selectedAllergens = formValue.allergens.map((id: number) =>
+      this.allergens.find((allergen: Allergen) => allergen.id === id)
+    );
 
-    // Map allergens to IDs if needed by the backend
-    const allergenDetails = allergens.map((alle: Allergen) => ({
-      id: alle.id, // Use relevant allergen field(s)
-      name: alle.name,
-    }));
-
-    // Pass values to addItem
-    this.addItem(name, desc, weight, cal, carbs, protein, fats, allergenDetails);
-    // this.addItem(
-    //   this.formModel.value.name,
-    //   this.formModel.value.desc,
-    //   this.formModel.value.weight,
-    //   this.formModel.value.cal,
-    //   this.formModel.value.carbs,
-    //   this.formModel.value.protein,
-    //   this.formModel.value.fats,
-    //   this.formModel.value.allergens
-    // );
+      this.addItem(
+        selectedAllergens,
+        this.formModel.value.name,
+        this.formModel.value.desc,
+        this.formModel.value.weight,
+        this.formModel.value.cal,
+        this.formModel.value.carbs,
+        this.formModel.value.protein,
+        this.formModel.value.fats
+        );
+    
   }
   
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Item } from '../models/item.model';
 
 @Injectable({
@@ -16,6 +16,11 @@ export class ItemService {
   }
 
   addItem(Item: Item): Observable<Item> {
-    return this.http.post<Item>(this.apiUrl, Item);
+    return this.http.post<Item>(this.apiUrl, Item).pipe(
+      catchError(error => {
+        console.error('Error adding item:', error);
+        return throwError(() => new Error('Error adding item'));
+      })
+    );
   }
 }

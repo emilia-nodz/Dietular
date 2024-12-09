@@ -27,6 +27,7 @@ export class AddAllergenComponent {
 
   addAllergen(name: string): void {
     const newAllergen: Allergen = {name} as Allergen;
+    console.log(newAllergen);
     this.allergenService.addAllergen(newAllergen).subscribe((allergen) => {
       this.allergens.push(allergen);
     }) 

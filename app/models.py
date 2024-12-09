@@ -61,7 +61,7 @@ class Item(models.Model):
     proteins = models.IntegerField()
     fats = models.IntegerField()
     # Allows multiple allergens per product and vice versa
-    allergens = models.ManyToManyField(Allergen, related_name='items', blank=True, null=True)
+    allergens = models.ManyToManyField(Allergen, related_name='items')
 
     class Meta:
         verbose_name = "Item"  # Singular form for display in admin panel

@@ -38,9 +38,9 @@
       </div>
 
       <div class="form-thing"><label for="allergens" class="label" >Allergens:</label>
-        <select class="allergen" multiple formControlName="allergens">
+        <select class="allergen" formControlName="allergens" multiple>
           @for(alle of allergens; track $index) {
-            <option value="allergen-val">{{alle.name}}</option>
+            <option [value]="alle.id">{{alle.name}}</option>
           }
         </select>
       </div>
