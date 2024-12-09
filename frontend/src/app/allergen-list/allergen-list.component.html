@@ -10,7 +10,7 @@
          
               @if(checkerfordelete === allergen.id) 
               {
-                 <p>Are you sure you want to delete {{allergen.name}}</p>
+                 <p><strong>Are you sure you want to delete {{allergen.name}}?</strong></p>
                  <button class="btn-view2" (click)="Delete(allergen.id)">Yes</button>
                  <button class="btn-view" (click)="Undo()">No</button>
               }

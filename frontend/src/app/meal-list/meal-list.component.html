@@ -16,7 +16,7 @@
            
               @if(checkerfordelete === meal.id) 
               {
-                 <p>Are you sure you want to delete {{meal.name}}</p>
+                 <p><strong>Are you sure you want to delete {{meal.name}}?</strong></p>
                  <button class="btn-view2" (click)="Delete(meal.id)">Yes</button>
                  <button class="btn-view" (click)="Undo()">No</button>
               }

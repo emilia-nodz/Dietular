@@ -15,7 +15,7 @@
             
             @if(checkerfordelete === item.id) 
             {
-               <p>Are you sure you want to delete {{item.name}}</p>
+               <p><strong>Are you sure you want to delete {{item.name}}?</strong></p>
                <button class="btn-view2" (click)="Delete(item.id)">Yes</button>
                <button class="btn-view" (click)="Undo()">No</button>
             }
