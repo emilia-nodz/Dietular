@@ -23,7 +23,7 @@ export class MealListComponent {
   @Output() interest: EventEmitter<number> = new EventEmitter();
   
   checker: number = 0;
-
+  checkerfordelete: number = 0;
   showDetails(x: number) {
     if(this.checker!=x) 
     {
@@ -36,5 +36,21 @@ export class MealListComponent {
      this.checker = -1;
     }
   }
+
+  Delete(itemid: number) {
+    console.log("Zaraz usuniemy " + itemid)
+    this.mealService.delete(itemid)
+    .subscribe()
+    location.reload();
+    }
+  
+    ShowConfirmation(itemid: number) {
+      this.checkerfordelete = itemid;
+    }
+  
+    Undo() {
+      this.checkerfordelete = -1;
+      console.log("Dobra jednak nie ")
+    }
 
 }

@@ -26,6 +26,7 @@ export class ItemListComponent {
 
 
 checker: number = 0;
+checkerfordelete: number = -1;
 
   showDetails(x: number) {
     if(this.checker!=x) 
@@ -46,5 +47,14 @@ checker: number = 0;
   location.reload();
   }
 
+  ShowConfirmation(itemid: number) {
+    this.checkerfordelete = itemid;
+  }
+
+  Undo() {
+    this.checkerfordelete = -1;
+    console.log("Dobra jednak nie ")
+  }
+  
 }
 

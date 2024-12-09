@@ -1,0 +1,26 @@
+@if (day){
+<div class="day-detail-container">
+  <h3>Details for {{ day.date | date: 'fullDate' }}</h3>
+  <div class="section">
+    <h4>Items</h4>
+    <ul>
+      @for (item of day.items; track item){
+      <li>{{item}}</li>
+      } @empty{
+      <li>There are no items</li>
+      }
+    </ul>
+  </div>
+
+  <div class="section">
+    <h4>Meals</h4>
+    <ul>
+      @for (meal of day.meals; track meal){
+      <li>{{meal}}</li>
+      } @empty{
+      <li>There are no meals</li>
+      }
+    </ul>
+  </div>
+</div>
+}

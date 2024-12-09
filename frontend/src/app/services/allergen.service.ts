@@ -20,6 +20,10 @@ export class AllergenService {
     return this.http.post<Allergen>(this.apiUrl, Allergen);
   }
 
+  delete(Id: number): Observable<void> {
+    
+    return this.http.delete<void>(`${this.apiUrl}${Id}/`);
+  }
 
 }
 

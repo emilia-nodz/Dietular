@@ -17,4 +17,22 @@ export class AllergenListComponent {
       this.allergens = data; 
     });
   }
+
+  checkerfordelete: number = 0;
+
+  Delete(itemid: number) {
+    console.log("Zaraz usuniemy " + itemid)
+    this.allergenService.delete(itemid)
+    .subscribe()
+    location.reload();
+    }
+  
+    ShowConfirmation(itemid: number) {
+      this.checkerfordelete = itemid;
+    }
+  
+    Undo() {
+      this.checkerfordelete = -1;
+      console.log("Dobra jednak nie ")
+    }
 }

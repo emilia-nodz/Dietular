@@ -19,4 +19,7 @@ export class DayService {
   addDay(Day: Day): Observable<Day> {
     return this.http.post<Day>(this.apiUrl, Day);
   }
+  getDayById(id: number): Observable<Day> {
+    return this.http.get<Day>(`${this.apiUrl}${id}/`);
+  }
 }

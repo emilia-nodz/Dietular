@@ -3,7 +3,7 @@ from django.db import models
 
 # dzień
 class Day(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.BigIntegerField(primary_key=True)
     date = models.DateField()
     items = models.ManyToManyField('Item', related_name='days')
     meals = models.ManyToManyField('Meal', related_name='meals')
