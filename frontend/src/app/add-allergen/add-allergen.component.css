@@ -1,12 +1,10 @@
 .main-container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    max-width: 300px;
-    margin: 50px auto; 
-    padding: 10px 30px;
-    background-color: #cdd9c7;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 10px 20px;
+    color: #f0f0f0;
 }
 
 .main-container h1 {
@@ -14,12 +12,44 @@
     font-size: 48px;
 }
 
-.main-container .btn-add {
+.main-container .form-container {
+    color: #4B3629;
+    background-color: #cdd9c7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.main-container .form-thing {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    padding: 10px;
+}
+
+.main-container .label {
+    padding: 5px;
+    color:#4B3629;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+}
+
+
+.main-container .btn-view {
     background-color: #ECE8E4;
     color:#4B3629;
-    padding: 10px 10px;
-    font-size: 20px;
+    padding: 10px;
+    font-size: 16px;
     font-weight: bold;
     border-radius: 8px;
-    border-color: #4b3629;
+    border-color: #9C8F87;
 }
