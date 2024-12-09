@@ -23,7 +23,7 @@
         @for (day of week; track day){
         <td class="day"
             [class.selectedDay]="isSelectedDay(day)"
-            [class.today]="isToday(day)"
+            [class.today]="isToday(day) && !isSelectedDay(day)"
             [class.current-month]="isCurrentMonth(day)"
             (click)="dayClick(day)">
           <span>{{ day?.getDate() }}</span>

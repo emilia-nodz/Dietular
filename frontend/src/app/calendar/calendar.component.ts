@@ -86,8 +86,8 @@ export class CalendarComponent implements OnInit {
   }
   dayClick(day: Date | null): void {
     if (day) {
-      const dayId = day.getTime();
-      if (this.selectedDay && this.selectedDay.id === day.getTime()) {
+      const dayId = day.getTime() + 86400000; //86400000 to różnica pomiędzy dniami
+      if (this.selectedDay && this.selectedDay.id === dayId) {
         console.log('Day deselected:', this.selectedDay);
         this.selectedDay = null;
         this.daySelected.emit(null);
