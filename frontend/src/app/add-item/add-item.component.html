@@ -19,12 +19,12 @@
 
       <div class="form-thing">
         <label class="label">Calories</label>
-        <input type="number" min="0" class="calories" placeholder="Kalorie (kCal)" formControlName="cal">
+        <input type="number" class="calories" placeholder="Kalorie (kCal)" formControlName="cal">
       </div>
 
       <div class="form-thing">
         <label class="label">Carbohydrates</label>
-        <input type="number" min="0" class="carbs" placeholder="Węglowodany (g)" formControlName="carbs">
+        <input type="number" class="carbs" placeholder="Węglowodany (g)" formControlName="carbs">
       </div>
 
       <div class="form-thing">
@@ -37,8 +37,8 @@
         <input type="number" min="0" class="fats" placeholder="Tłuszcze (g)" formControlName="fats">
       </div>
 
-      <div class="form-thing"><label for="allergens" class="label">Allergens:</label>
-        <select class="allergen" multiple>
+      <div class="form-thing"><label for="allergens" class="label" >Allergens:</label>
+        <select class="allergen" multiple formControlName="allergens">
           @for(alle of allergens; track $index) {
             <option value="allergen-val">{{alle.name}}</option>
           }
