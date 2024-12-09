@@ -202,3 +202,5 @@ frontend/typings
 frontend/.DS_Store
 frontend/Thumbs.db
 
+/.vs
+/frontend/package-lock.json
