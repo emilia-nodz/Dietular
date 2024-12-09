@@ -15,19 +15,12 @@ import { AllergenService } from '../services/allergen.service';
 })
 export class ItemDetailsComponent {
   items: Item[] = [];
-  allergens: Allergen[] = [];
-
 
   @Input() index: number | undefined;
 
-
-  constructor(private allergenService: AllergenService, private itemService: ItemService) {
+  constructor( private itemService: ItemService) {
     this.itemService.getItems().subscribe((data: Item[]) => {
       this.items = data;
-    });
-
-    this.allergenService.getAllergens().subscribe((data: Allergen[]) => {
-      this.allergens = data;
     });
   }
 

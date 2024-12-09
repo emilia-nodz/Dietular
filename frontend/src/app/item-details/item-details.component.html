@@ -1,4 +1,4 @@
-@if(index !== undefined && items[index]) {
+@if(index !== undefined) {
     <p class="weight">Weight: {{ items[index].weight}}</p>
     <p class="calories">Calories: {{ items[index].calories }}</p>
     <p class="carbohydrates">Carbohydrates: {{items[index].carbohydrates}}</p>
@@ -6,8 +6,10 @@
     <p class="fats">Fats: {{items[index].fats}}</p>
     <p class="allergens">Allergens:
         <ol>
-            @for(allergen of items[index].allergenDetails; track $index) {
-                <li>{{allergen.name}}</li> 
-            }
-        </ol>
+
+       
+        @for(allergen of items[index].allergen_details; track $index) {
+           <li>{{allergen.name}}</li> 
+        }
+    </ol>
 }

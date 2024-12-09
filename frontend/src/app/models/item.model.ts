@@ -2,8 +2,19 @@ import { Allergen } from "./allergen.model";
 
 export interface Item {
     id: number,
+    name: string,
+    description: string,
+    weight: number,
+    calories: number,
+    carbohydrates: number,
+    proteins: number,
+    fats: number,
+    allergen_details: Allergen[]    
+}
+
+export interface ItemToAdd {
+    id: number,
     allergens: number[],
-    allergenDetails?: Allergen[],
     name: string,
     description: string,
     weight: number,
@@ -12,4 +23,3 @@ export interface Item {
     proteins: number,
     fats: number       
 }
-

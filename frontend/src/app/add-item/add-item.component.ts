@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ItemService } from '../services/item.service';
-import { Item } from '../models/item.model'
+import { Item, ItemToAdd } from '../models/item.model'
 import { AllergenService } from '../services/allergen.service';
 import { Allergen } from '../models/allergen.model';
 import { positiveNumberValidator } from '../numbers-validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -21,7 +22,7 @@ export class AddItemComponent {
   formModel: FormGroup;
   formBuilder: any;
 
-  constructor(private itemService: ItemService, private allergenService: AllergenService, private fb: FormBuilder) {
+  constructor(private itemService: ItemService, private allergenService: AllergenService, private fb: FormBuilder, private router: Router) {
     this.allergenService.getAllergens().subscribe((alData: Allergen[]) => {
       this.allergensList = alData;
     })
@@ -42,8 +43,9 @@ export class AddItemComponent {
   }
 
   addItem(allergens: number[], name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number): void {
-    const newItem: Item = {allergens, name, description, weight, calories, carbohydrates, proteins, fats } as Item;
+    const newItem: ItemToAdd = {allergens, name, description, weight, calories, carbohydrates, proteins, fats } as ItemToAdd;
     console.log(newItem);
+    this.router.navigate(['/item-list-component']);
     this.itemService.addItem(newItem).subscribe((item) => {
       console.log(newItem);
       this.items.push(item);
@@ -52,25 +54,16 @@ export class AddItemComponent {
 
   
   submitForm() {
-
-    const formValue = this.formModel.value;
-
-    // Find full allergen objects based on selected IDs
-    // const selectedAllergens = formValue.allergens.map((id: number) =>
-    //   this.allergens.find((allergen: Allergen) => allergen.id === id)
-    // );
-
-      this.addItem(
-        this.formModel.value.allergens,
-        this.formModel.value.name,
-        this.formModel.value.desc,
-        this.formModel.value.weight,
-        this.formModel.value.cal,
-        this.formModel.value.carbs,
-        this.formModel.value.protein,
-        this.formModel.value.fats
-        );
-    
+    this.addItem(
+      this.formModel.value.allergens,
+      this.formModel.value.name,
+      this.formModel.value.desc,
+      this.formModel.value.weight,
+      this.formModel.value.cal,
+      this.formModel.value.carbs,
+      this.formModel.value.protein,
+      this.formModel.value.fats
+    );
   }
   
 }
