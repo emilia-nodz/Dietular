@@ -17,6 +17,8 @@ export class AddItemComponent {
   items: Item[] = [];
   allergens: Allergen[] = [];
 
+  formModel: FormGroup;
+
   constructor(private itemService: ItemService, private allergenService: AllergenService) {
     this.allergenService.getAllergens().subscribe((alData: Allergen[]) => {
       this.allergens = alData;
@@ -26,33 +28,18 @@ export class AddItemComponent {
     });
   }
 
-  // addItem(name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number, allergens: string[]): void {
-  //   const newItem: Item = {name, description, weight, calories, carbohydrates, proteins, fats, allergens} as Item;
-  //   this.itemService.addItem(newItem).subscribe((item) => {
-  //     this.items.push(item);
-  //   }) 
-  // }
+  addItem(name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number, allergen_details: Allergen[]): void {
+    const newItem: Item = {name, description, weight, calories, carbohydrates, proteins, fats, allergen_details} as Item;
+    this.itemService.addItem(newItem).subscribe((item) => {
+      this.items.push(item);
+    }) 
+  }
 
   // getSelectedAllergens(selectElement: HTMLSelectElement): string[] {
   //   const selectedOptions = Array.from(selectElement.selectedOptions); // Get selected options
   //   return selectedOptions.map((option) => option.value); // Map to an array of values
   // }
   
-  // addItem(
-  //   name: string,
-  //   description: string,
-  //   weight: number,
-  //   calories: number,
-  //   carbs: number,
-  //   proteins: number,
-  //   fats: number,
-  //   allergens: string[]
-  // ): void {
-  //   const newItem: Item = { name, description, weight, calories, carbohydrates: carbs, proteins, fats, allergens } as Item;
-  //   console.log(newItem);
-  //   this.itemService.addItem(newItem).subscribe((item) => {
-  //         this.items.push(item);
-  //       }) 
-  // }
+  submitForm()
   
 }
