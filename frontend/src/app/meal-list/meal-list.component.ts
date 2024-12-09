@@ -25,8 +25,16 @@ export class MealListComponent {
   checker: number = 0;
 
   showDetails(x: number) {
+    if(this.checker!=x) 
+    {
     this.checker = x;
     this.interest.emit(x);
+    }
+   
+    else 
+    {
+     this.checker = -1;
+    }
   }
 
 }

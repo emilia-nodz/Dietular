@@ -11,6 +11,7 @@
             @if(checker === item.id) { 
               <app-item-details [index]="$index"/>
             }
+            <button class="btn-view2" (click)="Delete(item.id)"> Delete </button>
           </li>
         }
       </div>

@@ -23,4 +23,11 @@ export class ItemService {
       })
     );
   }
+
+  delete(Id: number): Observable<void> {
+    console.log("zaraz extra mocno usuniemy" + Id)
+    return this.http.delete<void>(`${this.apiUrl}${Id}/`);
+  }
+  
+  
 }
