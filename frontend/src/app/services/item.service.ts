@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, map, mergeMap, Observable, throwError } from 'rxjs';
 import { Item } from '../models/item.model';
 import { Router } from '@angular/router';
+import { AllergenService } from './allergen.service';
+import { Allergen } from '../models/allergen.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +12,25 @@ import { Router } from '@angular/router';
 export class ItemService {
   private apiUrl = 'http://localhost:8000/app/item/';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private allergenService: AllergenService) {}
 
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.apiUrl).pipe(
+      mergeMap((items: Item[]) =>
+        this.allergenService.getAllergens().pipe(
+          map((allergens: Allergen[]) => {
+            const allergenMap = new Map<number, Allergen>(
+              allergens?.map(allergen => [allergen.id, allergen])
+            );
+
+            // Map allergen IDs in items to full allergen details
+            return items.map(item => ({
+              ...item,
+              allergenDetails: item.allergens?.map(id => allergenMap.get(id)!)
+            }));
+          })
+        )
+      ),
       catchError(error => {
         console.error('Error getting item:', error);
         return throwError(() => new Error('Error getting item'));

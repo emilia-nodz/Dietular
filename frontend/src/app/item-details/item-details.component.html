@@ -6,8 +6,8 @@
     <p class="fats">Fats: {{items[index].fats}}</p>
     <p class="allergens">Allergens:
         <ol>
-            @for(allergen of getAllergenDetails(items[index].allergens); track $index) {
-            <li>{{allergen.name}}</li> 
+            @for(allergen of items[index].allergenDetails; track $index) {
+                <li>{{allergen.name}}</li> 
             }
         </ol>
 }

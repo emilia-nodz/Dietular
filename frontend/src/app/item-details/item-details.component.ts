@@ -17,6 +17,7 @@ export class ItemDetailsComponent {
   items: Item[] = [];
   allergens: Allergen[] = [];
 
+
   @Input() index: number | undefined;
 
 
@@ -30,8 +31,6 @@ export class ItemDetailsComponent {
     });
   }
 
-  getAllergenDetails(allergenIds: number[]): Allergen[] {
-    return allergenIds.map(id => this.allergens.find(allergen => allergen.id === id)!);
-  }
+
 
 }
