@@ -11,6 +11,15 @@
               @if(checker === meal.id) { 
                 <app-meal-details [index]="$index"/>
               }
+
+              <button class="btn-view2" (click)="ShowConfirmation(meal.id)"> Delete </button>
+           
+              @if(checkerfordelete === meal.id) 
+              {
+                 <p>Are you sure you want to delete {{meal.name}}</p>
+                 <button class="btn-view2" (click)="Delete(meal.id)">Yes</button>
+                 <button class="btn-view" (click)="Undo()">No</button>
+              }
             </li>
           }
         </div>

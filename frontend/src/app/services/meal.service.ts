@@ -20,5 +20,10 @@ export class MealService {
     return this.http.post<Meal>(this.apiUrl, Meal);
   }
 
+  delete(Id: number): Observable<void> {
+    
+    return this.http.delete<void>(`${this.apiUrl}${Id}/`);
+  }
+  
   
 }
