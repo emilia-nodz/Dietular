@@ -3,6 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {  Item } from '../models/item.model'
 import { ItemService } from '../services/item.service';
+import { Allergen } from '../models/allergen.model';
+import { AllergenService } from '../services/allergen.service';
 
 @Component({
   selector: 'app-item-details',
@@ -13,13 +15,23 @@ import { ItemService } from '../services/item.service';
 })
 export class ItemDetailsComponent {
   items: Item[] = [];
+  allergens: Allergen[] = [];
 
   @Input() index: number | undefined;
 
-  constructor(private itemService: ItemService) {
+
+  constructor(private allergenService: AllergenService, private itemService: ItemService) {
     this.itemService.getItems().subscribe((data: Item[]) => {
-    this.items = data;
+      this.items = data;
     });
+
+    this.allergenService.getAllergens().subscribe((data: Allergen[]) => {
+      this.allergens = data;
+    });
+  }
+
+  getAllergenDetails(allergenIds: number[]): Allergen[] {
+    return allergenIds.map(id => this.allergens.find(allergen => allergen.id === id)!);
   }
 
 }

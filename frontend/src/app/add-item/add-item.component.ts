@@ -16,14 +16,14 @@ import { positiveNumberValidator } from '../numbers-validator';
 })
 export class AddItemComponent {
   items: Item[] = [];
-  allergens: Allergen[] = [];
+  allergensList: Allergen[] = [];
 
   formModel: FormGroup;
   formBuilder: any;
 
   constructor(private itemService: ItemService, private allergenService: AllergenService, private fb: FormBuilder) {
     this.allergenService.getAllergens().subscribe((alData: Allergen[]) => {
-      this.allergens = alData;
+      this.allergensList = alData;
     })
     this.itemService.getItems().subscribe((data: Item[]) => {
       this.items = data; 
@@ -41,8 +41,8 @@ export class AddItemComponent {
     });
   }
 
-  addItem(allergen_details: Allergen[], name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number): void {
-    const newItem: Item = {allergen_details, name, description, weight, calories, carbohydrates, proteins, fats } as Item;
+  addItem(allergens: number[], name: string, description: string, weight: number, calories: number, carbohydrates: number, proteins: number, fats: number): void {
+    const newItem: Item = {allergens, name, description, weight, calories, carbohydrates, proteins, fats } as Item;
     console.log(newItem);
     this.itemService.addItem(newItem).subscribe((item) => {
       console.log(newItem);
@@ -56,12 +56,12 @@ export class AddItemComponent {
     const formValue = this.formModel.value;
 
     // Find full allergen objects based on selected IDs
-    const selectedAllergens = formValue.allergens.map((id: number) =>
-      this.allergens.find((allergen: Allergen) => allergen.id === id)
-    );
+    // const selectedAllergens = formValue.allergens.map((id: number) =>
+    //   this.allergens.find((allergen: Allergen) => allergen.id === id)
+    // );
 
       this.addItem(
-        selectedAllergens,
+        this.formModel.value.allergens,
         this.formModel.value.name,
         this.formModel.value.desc,
         this.formModel.value.weight,
