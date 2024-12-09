@@ -21,11 +21,6 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = '__all__'
 
-class DaySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Day
-        fields = '__all__'
-
 class MealSerializer(serializers.ModelSerializer):
     items = serializers.PrimaryKeyRelatedField(
         many=True,
@@ -41,3 +36,10 @@ class MealSerializer(serializers.ModelSerializer):
         model = Meal
         fields = '__all__'
 
+class DaySerializer(serializers.ModelSerializer):
+    items = ItemSerializer(many=True, read_only=True)  # Use nested serializer
+    meals = MealSerializer(many=True, read_only=True)  # Use nested serializer
+
+    class Meta:
+        model = Day
+        fields = '__all__'

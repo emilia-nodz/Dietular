@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Day } from '../models/day.model';
+import { DayService } from '../services/day.service';
 import { DayDetailComponent } from '../day-detail/day-detail.component';
 
 @Component({
@@ -17,6 +18,8 @@ export class CalendarComponent implements OnInit {
   currentYear!: number;
   weeks: (Date | null)[][] = [];
   selectedDay: Day | null = null;
+
+  constructor(private dayService: DayService) { }
 
   ngOnInit() {
     this.currentMonth = this.currentDate.getMonth();
@@ -63,8 +66,15 @@ export class CalendarComponent implements OnInit {
 
   isSelectedDay(day: Date | null): boolean {
     if (!day || !this.selectedDay) return false;
-    return day.getTime() === this.selectedDay.date.getTime();
+
+    const selectedDate =
+      typeof this.selectedDay.date === 'string'
+        ? new Date(this.selectedDay.date)
+        : this.selectedDay.date;
+
+    return day.getTime() === selectedDate.getTime();
   }
+
   prevMonth(): void {
     this.currentMonth--;
     if (this.currentMonth < 0) {
@@ -84,13 +94,41 @@ export class CalendarComponent implements OnInit {
   }
   dayClick(day: Date | null): void {
     if (day) {
-      this.selectedDay = {
-        id: day.getDate(), // Example ID based on the day
-        date: day,
-        items: ['Item 1', 'Item 2'], // Replace with real data if available
-        meals: ['Breakfast', 'Lunch', 'Dinner'] // Replace with real data
-      };
-      this.daySelected.emit(this.selectedDay);
+      const dayId = day.getTime();
+
+      this.dayService.getDayById(dayId).subscribe(
+        (data) => {
+          this.selectedDay = data;
+          console.log('Day fetchd: ', this.selectedDay);
+          this.daySelected.emit(this.selectedDay);
+        },
+        (error) => {
+          if (error.status === 404) {
+            const formattedDate = new Date(dayId).toISOString().split('T')[0];
+            const newDay: Day = {
+              id: dayId, // Use the provided ID
+              date: formattedDate, // Convert the ID to a Date object
+              items: [], // Initialize with an empty items array
+              meals: [] // Initialize with an empty meals array
+            } as unknown as Day;
+
+            this.dayService.addDay(newDay).subscribe(
+              (createDay) => {
+                this.selectedDay = createDay;
+                console.log('New day created: ', this.selectedDay);
+                this.daySelected.emit(this.selectedDay);
+              },
+              (createError) => {
+                console.error('Errir creating day: ', createError);
+              }
+            );
+          } else {
+            console.error('Error fetching day', error);
+          }
+        }
+      );
+    } else {
+      console.warn('No day selected');
     }
   }
 }
