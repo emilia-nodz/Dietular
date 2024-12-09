@@ -64,7 +64,7 @@ export class CalendarComponent implements OnInit {
 
   isSelectedDay(day: Date | null): boolean {
     if (!day || !this.selectedDay) return false;
-    return day.getTime() === this.selectedDay.id;
+    return day.getTime() + 86400000 === this.selectedDay.id;
   }
 
   prevMonth(): void {
