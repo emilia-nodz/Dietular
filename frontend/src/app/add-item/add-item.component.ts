@@ -5,7 +5,6 @@ import { ItemService } from '../services/item.service';
 import { Item, ItemToAdd } from '../models/item.model'
 import { AllergenService } from '../services/allergen.service';
 import { Allergen } from '../models/allergen.model';
-import { positiveNumberValidator } from '../numbers-validator';
 import { Router } from '@angular/router';
 
 @Component({
@@ -31,14 +30,14 @@ export class AddItemComponent {
     });
 
     this.formModel = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.maxLength(50)]],
       desc: ['', Validators.required],
-      weight: ['', Validators.required],
-      cal: ['', Validators.required],
-      protein: ['', Validators.required],
-      carbs: ['', Validators.required],
-      fats: ['', Validators.required],
-      allergens: [[],Validators.required],
+      weight: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
+      cal: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
+      protein: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
+      carbs: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
+      fats: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
+      allergens: [[],],
     });
   }
 
