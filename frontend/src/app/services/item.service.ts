@@ -18,4 +18,11 @@ export class ItemService {
   addItem(Item: Item): Observable<Item> {
     return this.http.post<Item>(this.apiUrl, Item);
   }
+
+  delete(Id: number): Observable<void> {
+    console.log("zaraz extra mocno usuniemy" + Id)
+    return this.http.delete<void>(`${this.apiUrl}${Id}/`);
+  }
+  
+  
 }

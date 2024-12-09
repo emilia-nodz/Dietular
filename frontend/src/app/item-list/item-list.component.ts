@@ -41,6 +41,9 @@ checker: number = 0;
 
   Delete(itemid: number) {
   console.log("Zaraz usuniemy " + itemid)
+  this.itemService.delete(itemid)
+  .subscribe()
+  location.reload();
   }
 
 }
