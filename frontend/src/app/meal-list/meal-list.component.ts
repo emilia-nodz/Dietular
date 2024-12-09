@@ -25,32 +25,28 @@ export class MealListComponent {
   checker: number = 0;
   checkerfordelete: number = 0;
   showDetails(x: number) {
-    if(this.checker!=x) 
-    {
-    this.checker = x;
-    this.interest.emit(x);
-    }
-   
-    else 
-    {
-     this.checker = -1;
+    if(this.checker!=x) {
+      this.checker = x;
+      this.interest.emit(x);
+    } else {
+      this.checker = -1;
     }
   }
 
-  Delete(itemid: number) {
+  deleteThing(itemid: number) {
     console.log("Zaraz usuniemy " + itemid)
     this.mealService.delete(itemid)
     .subscribe()
     location.reload();
-    }
+  }
   
-    ShowConfirmation(itemid: number) {
-      this.checkerfordelete = itemid;
-    }
+  showConfirmation(itemid: number) {
+    this.checkerfordelete = itemid;
+  }
   
-    Undo() {
-      this.checkerfordelete = -1;
-      console.log("Dobra jednak nie ")
-    }
+  undo() {
+    this.checkerfordelete = -1;
+    console.log("Dobra jednak nie ")
+  }
 
 }

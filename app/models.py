@@ -25,7 +25,6 @@ class Meal(models.Model):
     numberOfPortions = models.IntegerField()
     portionWeight = models.IntegerField()
     caloriesPerPortion = models.IntegerField()
-    mealImage = models.ImageField(upload_to='meal_images/', default='media/meal_images/meal_icon.jpg')
 
     class Meta:
         verbose_name = "Meal"  # Singular form for display in admin panel

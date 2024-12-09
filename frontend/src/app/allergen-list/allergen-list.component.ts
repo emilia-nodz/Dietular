@@ -20,19 +20,18 @@ export class AllergenListComponent {
 
   checkerfordelete: number = 0;
 
-  Delete(itemid: number) {
+  deleteThing(itemid: number) {
     console.log("Zaraz usuniemy " + itemid)
-    this.allergenService.delete(itemid)
-    .subscribe()
+    this.allergenService.delete(itemid).subscribe();
     location.reload();
-    }
+  }
   
-    ShowConfirmation(itemid: number) {
-      this.checkerfordelete = itemid;
-    }
+  showConfirmation(itemid: number) {
+    this.checkerfordelete = itemid;
+  }
   
-    Undo() {
-      this.checkerfordelete = -1;
-      console.log("Dobra jednak nie ")
-    }
+  undo() {
+    this.checkerfordelete = -1;
+    console.log("Dobra jednak nie ")
+  }
 }

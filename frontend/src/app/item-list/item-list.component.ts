@@ -22,36 +22,32 @@ export class ItemListComponent {
     });
   }
 
-@Output() interest: EventEmitter<number> = new EventEmitter();
+  @Output() interest: EventEmitter<number> = new EventEmitter();
 
 
-checker: number = 0;
-checkerfordelete: number = -1;
+  checker: number = 0;
+  checkerfordelete: number = -1;
 
   showDetails(x: number) {
-    if(this.checker!=x) 
-    {
+    if(this.checker!=x) {
        this.checker = x;
-    this.interest.emit(x);
-    }
-   else 
-   {
+      this.interest.emit(x);
+    } else {
     this.checker = -1;
-   }
+    }
   }
 
-  Delete(itemid: number) {
-  console.log("Zaraz usuniemy " + itemid)
-  this.itemService.delete(itemid)
-  .subscribe()
-  location.reload();
+  deleteThing(itemid: number) {
+    console.log("Zaraz usuniemy " + itemid)
+    this.itemService.delete(itemid).subscribe();
+    location.reload();
   }
 
-  ShowConfirmation(itemid: number) {
+  showConfirmation(itemid: number) {
     this.checkerfordelete = itemid;
   }
 
-  Undo() {
+  undo() {
     this.checkerfordelete = -1;
     console.log("Dobra jednak nie ")
   }
