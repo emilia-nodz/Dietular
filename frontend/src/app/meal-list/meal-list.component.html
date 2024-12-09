@@ -7,15 +7,9 @@
             <li class="list-item-container">
               <p class="name">{{meal.name}}</p>
               <p class="description">{{meal.description}}</p>
-              <button class="btn-view" (click)="showDetails()">View</button>
-              @if(checker)
-              {
-                <p class="numberOfPortions">Number of portions: {{meal.numberOfPortions}}</p>
-                <p class="portionWeight">Weight of a portion: {{meal.portionWeight}}</p>
-                <p class="caloriesPerPortion">Calories per portion: {{meal.caloriesPerPortion}}</p>
-                <p class="items">Items in the  meal: {{meal.items}}</p>
-                <p class="items">url: {{meal.meal_image}}</p>
-                <img src="meal.meal_image" alt="{{ meal.name }}"/>
+              <button class="btn-view" (click)="showDetails(meal.id)">View</button>
+              @if(checker === meal.id) { 
+                <app-meal-details [index]="$index"/>
               }
             </li>
           }
