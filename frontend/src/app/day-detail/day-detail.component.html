@@ -3,13 +3,25 @@
   <h3>Details for {{ day.date | date: 'fullDate' }}</h3>
   <div class="section">
     <h4>Items</h4>
-    <ul>
-      @for (item of day.items; track item){
-      <li>{{item}}</li>
+    <ul class="item-list">
+      @for (item of day.item_details; track item){
+      <li class="item-entry">
+        <img src="http://localhost:8000/media/icons/diamond-minus.png"
+             alt="{{ item.name }}"
+             class="item-icon" />
+        {{item.name}}
+      </li>
       } @empty{
       <li>There are no items</li>
       }
     </ul>
+    <img src="http://localhost:8000/media/icons/circle-ellipsis.png"
+         alt="Add item"
+         (click)="itemClick()" />
+    <div *ngIf="showItemDropdown" class="dropdown">
+      <app-item-calendar-list (interest)="addItemToDay($event)">
+      </app-item-calendar-list>
+    </div>
   </div>
 
   <div class="section">
@@ -21,6 +33,12 @@
       <li>There are no meals</li>
       }
     </ul>
+    <img src="http://localhost:8000/media/icons/diamond-plus.png" alt="Add meal" />
   </div>
+
+
+<button (click)="saveDay()" [disabled]="saving">
+  {{ saving ? 'Saving...' : 'Save Day' }}
+</button>
 </div>
 }
