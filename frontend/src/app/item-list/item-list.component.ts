@@ -26,7 +26,7 @@ export class ItemListComponent {
 
 
 checker: number = 0;
-checkerfordelete: number = 0;
+checkerfordelete: number = -1;
 
   showDetails(x: number) {
     if(this.checker!=x) 
