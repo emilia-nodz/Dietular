@@ -12,7 +12,7 @@ import { DayDetailComponent } from '../day-detail/day-detail.component';
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent implements OnInit {
-  @Output() daySelected = new EventEmitter<Day>();
+  @Output() daySelected = new EventEmitter<Day | null>();
   currentDate = new Date();
   currentMonth!: number;
   currentYear!: number;
@@ -30,8 +30,6 @@ export class CalendarComponent implements OnInit {
   generateCalendar(year: number, month: number): void {
     const firstDayOfMonth = new Date(year, month, 1);
     const lastDayOfMonth = new Date(year, month + 1, 0);
-
-    // pierwszy dzień tygodnia: niedziela
     const startDate = new Date(firstDayOfMonth);
     startDate.setDate(startDate.getDate() - startDate.getDay());
 
@@ -66,13 +64,7 @@ export class CalendarComponent implements OnInit {
 
   isSelectedDay(day: Date | null): boolean {
     if (!day || !this.selectedDay) return false;
-
-    const selectedDate =
-      typeof this.selectedDay.date === 'string'
-        ? new Date(this.selectedDay.date)
-        : this.selectedDay.date;
-
-    return day.getTime() === selectedDate.getTime();
+    return day.getTime() === this.selectedDay.id;
   }
 
   prevMonth(): void {
@@ -95,7 +87,12 @@ export class CalendarComponent implements OnInit {
   dayClick(day: Date | null): void {
     if (day) {
       const dayId = day.getTime();
-
+      if (this.selectedDay && this.selectedDay.id === day.getTime()) {
+        console.log('Day deselected:', this.selectedDay);
+        this.selectedDay = null;
+        this.daySelected.emit(null);
+        return;
+      }
       this.dayService.getDayById(dayId).subscribe(
         (data) => {
           this.selectedDay = data;
@@ -106,10 +103,10 @@ export class CalendarComponent implements OnInit {
           if (error.status === 404) {
             const formattedDate = new Date(dayId).toISOString().split('T')[0];
             const newDay: Day = {
-              id: dayId, // Use the provided ID
-              date: formattedDate, // Convert the ID to a Date object
-              items: [], // Initialize with an empty items array
-              meals: [] // Initialize with an empty meals array
+              id: dayId,
+              date: formattedDate,
+              items: [],
+              meals: []
             } as unknown as Day;
 
             this.dayService.addDay(newDay).subscribe(
