@@ -1,24 +1,16 @@
-.day-detail-container {
-  padding: 1em;
-  font-family: Arial, sans-serif;
-  max-width: 100%;
-}
-
-
 .item-list {
   list-style-type: none;
-  padding: 0;
+  padding-left: 30px;
   margin: 0;
 }
 
 .item-entry {
   display: flex;
   align-items: center;
-  padding: 1px;
+  cursor: pointer;
 }
 
 .item-icon {
   width: 16px;
   height: 16px;
-  padding: 1px;
 }
