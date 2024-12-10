@@ -48,7 +48,17 @@ class DaySerializer(serializers.ModelSerializer):
         source='items',
         read_only=True
     )
-    meals = MealSerializer(many=True, read_only=True)  # Use nested serializer
+    meals = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Meal.objects.all(),
+        write_only=True
+    )
+
+    meal_details = MealSerializer(
+        many=True,
+        source='meals',
+        read_only=True
+    )
 
     class Meta:
         model = Day
