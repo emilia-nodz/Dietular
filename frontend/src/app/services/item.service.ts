@@ -20,6 +20,15 @@ export class ItemService {
       })
     );
   }
+
+  getItemsToAdd(): Observable<ItemToAdd[]> {
+    return this.http.get<ItemToAdd[]>(this.apiUrl).pipe(
+      catchError(error => {
+        console.error('Error getting item:', error);
+        return throwError(() => new Error('Error getting item'));
+      })
+    );
+  }
   
 
   addItem(ItemToAdd: ItemToAdd): Observable<Item> {
@@ -35,7 +44,7 @@ export class ItemService {
     );
   }
 
-  delete(Id: number): Observable<void> {
+  deleteItem(Id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}${Id}/`).pipe(
       catchError(error => {
         console.error('Error deleting item:', error);
@@ -43,6 +52,14 @@ export class ItemService {
       })
     );
   }
-  
+
+  updateItem(ItemToAdd: ItemToAdd): Observable<Item> {
+    return this.http.put<Item>(`${this.apiUrl}${ItemToAdd.id}/`, ItemToAdd).pipe(
+      catchError(error => {
+        console.error('Error deleting item:', error);
+        return throwError(() => new Error('Error deleting item'));
+      })
+    );
+  }
   
 }

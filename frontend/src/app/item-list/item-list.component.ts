@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ItemService } from '../services/item.service';
 import {  Item } from '../models/item.model'
 import { ItemDetailsComponent } from '../item-details/item-details.component';
+import { EditItemComponent } from '../edit-item/edit-item.component';
 
 
 @Component({
   selector: 'app-item-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ItemDetailsComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ItemDetailsComponent, EditItemComponent],
   templateUrl: './item-list.component.html',
   styleUrl: './item-list.component.css'
 })
@@ -22,16 +23,17 @@ export class ItemListComponent {
     });
   }
 
-  @Output() interest: EventEmitter<number> = new EventEmitter();
+  @Output() emitter: EventEmitter<number> = new EventEmitter();
 
 
   checker: number = 0;
   checkerfordelete: number = -1;
+  updateChecker: number | null = null;
 
   showDetails(x: number) {
     if(this.checker!=x) {
        this.checker = x;
-      this.interest.emit(x);
+      this.emitter.emit(x);
     } else {
     this.checker = -1;
     }
@@ -39,7 +41,7 @@ export class ItemListComponent {
 
   deleteThing(itemid: number) {
     console.log("Zaraz usuniemy " + itemid)
-    this.itemService.delete(itemid).subscribe();
+    this.itemService.deleteItem(itemid).subscribe();
     location.reload();
   }
 
@@ -50,6 +52,16 @@ export class ItemListComponent {
   undo() {
     this.checkerfordelete = -1;
     console.log("Dobra jednak nie ")
+  }
+
+  update(itemId: number): void {
+    if(this.updateChecker = itemId) {
+      this.updateChecker = itemId;
+      this.emitter.emit(itemId);
+      console.log("emited", itemId);
+   } else {
+    this.updateChecker = -1;
+   }
   }
   
 }
