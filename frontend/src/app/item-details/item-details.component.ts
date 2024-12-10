@@ -3,8 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {  Item } from '../models/item.model'
 import { ItemService } from '../services/item.service';
-import { Allergen } from '../models/allergen.model';
-import { AllergenService } from '../services/allergen.service';
 
 @Component({
   selector: 'app-item-details',

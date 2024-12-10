@@ -53,3 +53,7 @@
     border-radius: 8px;
     border-color: #9C8F87;
 }
+
+.main-container .btn-view:disabled {
+    cursor: not-allowed;
+}
