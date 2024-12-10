@@ -21,7 +21,7 @@ export class AllergenListComponent {
   checkerfordelete: number = 0;
 
   Delete(itemid: number) {
-    console.log("Zaraz usuniemy " + itemid)
+
     this.allergenService.delete(itemid)
     .subscribe()
     location.reload();
@@ -33,6 +33,6 @@ export class AllergenListComponent {
   
     Undo() {
       this.checkerfordelete = -1;
-      console.log("Dobra jednak nie ")
+    
     }
 }
