@@ -46,7 +46,7 @@ export class EditAllergenComponent {
     
 
     this.formModel = new FormGroup({
-      name: new FormControl('',[Validators.required])
+      name: new FormControl('',[ Validators.maxLength(50)])
     });
     
   }
@@ -66,5 +66,9 @@ export class EditAllergenComponent {
         location.reload();
       });
     }
+  }
+
+  cancel() {
+    this.editInList.emit(this.editAllergen);
   }
 }
