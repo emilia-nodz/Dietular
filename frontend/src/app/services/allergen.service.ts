@@ -40,7 +40,7 @@ export class AllergenService {
   }
 
   updateAllergen(Allergen: Allergen): Observable<Allergen> {
-    return this.http.put<Allergen>(`${this.apiUrl}${Allergen.id}/`, Allergen).pipe(
+    return this.http.patch<Allergen>(`${this.apiUrl}${Allergen.id}/`, Allergen).pipe(
       catchError(error => {
         console.error('Error deleting allergen:', error);
         return throwError(() => new Error('Error deleting allergen'));

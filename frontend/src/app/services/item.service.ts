@@ -54,7 +54,7 @@ export class ItemService {
   }
 
   updateItem(ItemToAdd: ItemToAdd): Observable<Item> {
-    return this.http.put<Item>(`${this.apiUrl}${ItemToAdd.id}/`, ItemToAdd).pipe(
+    return this.http.patch<Item>(`${this.apiUrl}${ItemToAdd.id}/`, ItemToAdd).pipe(
       catchError(error => {
         console.error('Error deleting item:', error);
         return throwError(() => new Error('Error deleting item'));
