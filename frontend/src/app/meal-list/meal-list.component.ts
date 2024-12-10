@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { MealService } from '../services/meal.service';
 import {  Meal } from '../models/meal.model'
 import { MealDetailsComponent } from '../meal-details/meal-details.component';
+import { EditMealComponent } from "../edit-meal/edit-meal.component";
 
 @Component({
   selector: 'app-meal-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MealDetailsComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MealDetailsComponent, EditMealComponent],
   templateUrl: './meal-list.component.html',
   styleUrl: './meal-list.component.css'
 })
@@ -20,14 +21,16 @@ export class MealListComponent {
       this.meals = data;
     });
   }
-  @Output() interest: EventEmitter<number> = new EventEmitter();
-  
+  @Output() emitter: EventEmitter<number> = new EventEmitter();
+
   checker: number = 0;
   checkerfordelete: number = 0;
+  updateChecker: number | null = null;
+
   showDetails(x: number) {
     if(this.checker!=x) {
       this.checker = x;
-      this.interest.emit(x);
+      this.emitter.emit(x);
     } else {
       this.checker = -1;
     }
@@ -49,4 +52,13 @@ export class MealListComponent {
     console.log("Dobra jednak nie ")
   }
 
+  update(itemId: number): void {
+    if(this.updateChecker = itemId) {
+      this.updateChecker = itemId;
+      this.emitter.emit(itemId);
+      console.log("emited", itemId);
+   } else {
+    this.updateChecker = -1;
+   }
+  }
 }

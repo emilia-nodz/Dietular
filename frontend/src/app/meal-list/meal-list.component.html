@@ -11,6 +11,10 @@
               @if(checker === meal.id) { 
                 <app-meal-details [index]="$index"/>
               }
+              <button class="btn-view" (click)="update(meal.id)"> Edit </button>
+              @if(updateChecker === meal.id) {
+                <app-edit-meal [index]="$index"></app-edit-meal>
+              }
 
               <button class="btn-view2" (click)="showConfirmation(meal.id)"> Delete </button>
            

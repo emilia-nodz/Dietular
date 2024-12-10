@@ -51,5 +51,13 @@ export class MealService {
     );
   }
   
+  updateMeal(MealToAdd: MealToAdd): Observable<Meal> {
+    return this.http.put<Meal>(`${this.apiUrl}${MealToAdd.id}/`, MealToAdd).pipe(
+      catchError(error => {
+        console.error('Error deleting item:', error);
+        return throwError(() => new Error('Error deleting item'));
+      })
+    );
+  }
   
 }

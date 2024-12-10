@@ -30,6 +30,7 @@ export class EditItemComponent {
     this.formModel.patchValue({ protein: this.currentItem.proteins });
     this.formModel.patchValue({ carbs: this.currentItem.carbohydrates });
     this.formModel.patchValue({ fats: this.currentItem.fats });
+    this.formModel.patchValue({ allergens: this.currentItem.allergens });
   }
   get editItem(): ItemToAdd {
     return this.oldItem;
