@@ -45,6 +45,16 @@ export class DayDetailComponent {
     }
   }
 
+  removeItemFromDay(item: Item): void {
+    if (this.day) {
+      if (!this.day.item_details) {
+        this.day.item_details = [];
+      }
+      this.day.item_details = this.day.item_details.filter(i => i.id !== item.id);
+      console.log('Item removed from day:', item);
+    }
+  }
+
   addMealToDay(meal: Meal): void {
     if (this.day) {
       if (!this.day.meal_details) {
@@ -57,6 +67,15 @@ export class DayDetailComponent {
     }
   }
 
+  removeMealFromDay(meal: Meal): void {
+    if (this.day) {
+      if (!this.day.meal_details) {
+        this.day.meal_details = [];
+      }
+      this.day.meal_details = this.day.meal_details.filter(i => i.id !== meal.id);
+      console.log('Item removed from day:', meal);
+    }
+  }
 
   saveDay(): void {
     if (!this.day) {
