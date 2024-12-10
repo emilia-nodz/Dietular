@@ -18,7 +18,6 @@ export class DayDetailComponent {
   @Input() day: Day | null = null;
   tempItems: Item[] = [];
   showItemDropdown = false;
-  saving = false;
 
   constructor(private dayService: DayService) { }
 
@@ -27,9 +26,17 @@ export class DayDetailComponent {
   }
 
   addItemToDay(item: Item): void {
-    this.tempItems.push(item);
-    console.log('Item added to unsaved list', item);
+    if (this.day) {
+      if (!this.day.item_details) {
+        this.day.item_details = [];
+      }
+
+      this.day.item_details.push(item);
+      this.tempItems.push(item);
+      console.log('Item added to temporary list:', item);
+    }
   }
+
 
   saveDay(): void {
     if (!this.day) {
@@ -37,41 +44,26 @@ export class DayDetailComponent {
       return;
     }
 
-    // Ensure `items` is initialized as an array
-    if (!Array.isArray(this.day.items)) {
-      this.day.items = [];
+    if (!Array.isArray(this.day.item_details)) {
+      this.day.item_details = [];
     }
 
-    // Map items to IDs for saving
+    // Prepare the day object for saving, mapping item_details to IDs for backend
     const updatedDay = {
-      ...this.day,
-      items: [...this.day.items.map(item => item.id), ...this.tempItems.map(item => item.id)] as any, // Cast to avoid type mismatch
+      id: this.day.id,
+      date: this.day.date,
+      items: this.day.item_details.map(item => item.id), // Convert to IDs
+      meals: this.day.meals,
     };
 
-    console.log('Preparing to save day:', updatedDay);
-
-    this.saving = true;
     this.dayService.updateDay(updatedDay).subscribe(
       (updatedDayFromServer) => {
         console.log('Day updated:', updatedDayFromServer);
 
-        // Update item_details after save
-        if (this.day) {
-          this.day.item_details = [...(this.day.item_details || []), ...this.tempItems];
-        }
-
-        this.tempItems = []; // Clear temporary items
-        this.saving = false;
-        alert('Day saved successfully!');
       },
       (error) => {
         console.error('Error updating day:', error);
-        this.saving = false;
-        alert('Error saving day. Please check the data format.');
       }
     );
   }
-
-
-
 }
