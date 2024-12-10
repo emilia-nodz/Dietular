@@ -11,14 +11,24 @@
               @if(checker === meal.id) { 
                 <app-meal-details [index]="$index"/>
               }
+              <button class="btn-view" (click)="update(meal.id)"> Edit </button>
+              @if(updateChecker === meal.id) {
+                <app-edit-meal [index]="$index"></app-edit-meal>
+              }
 
-              <button class="btn-view2" (click)="ShowConfirmation(meal.id)"> Delete </button>
+              <button class="btn-view2" (click)="showConfirmation(meal.id)"> Delete </button>
            
               @if(checkerfordelete === meal.id) 
               {
-                 <p><strong>Are you sure you want to delete {{meal.name}}?</strong></p>
-                 <button class="btn-view2" (click)="Delete(meal.id)">Yes</button>
-                 <button class="btn-view" (click)="Undo()">No</button>
+                <div class="form-container">
+                  <div class="form-thing">
+                    <h3>Are you sure you want to delete {{meal.name}}?</h3>
+                  </div>
+                  <div class="form-buttons">
+                    <button class="btn-view2" (click)="deleteThing(meal.id)">Yes</button>
+                    <button class="btn-view" (click)="undo()">No</button>
+                  </div>
+                </div>
               }
             </li>
           }

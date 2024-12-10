@@ -1,5 +1,4 @@
 <div class="main-container">
-    <h1>Add meal</h1>
     <div class="form-container">
       <form [formGroup]="formModel" (ngSubmit)="submitForm()">
         <div class="form-thing">
@@ -52,15 +51,16 @@
 
         <div class="form-thing"><label for="items" class="label" >Items:</label>
           <select class="item" formControlName="items" multiple>
-            @for(i of itemList; track $index) {
+            @for(i of itemsList; track $index) {
               <option [value]="i.id">{{i.name}}</option>
             }
           </select>
         </div>
   
-        <div class="form-thing">
-          <input [disabled]="!formModel.valid" type="submit" value="Add meal" class="btn-view">
-        </div>
+        <div class="form-buttons">
+            <input [disabled]="!formModel.valid" type="submit" value="Update meal" class="btn-view">
+            <button class="btn-view2" (click)="cancel()">Cancel</button>
+          </div>
       </form>
     </div>
   </div>

@@ -7,5 +7,14 @@ export interface Meal {
     numberOfPortions: number,
     portionWeight: number,
     caloriesPerPortion: number,
-    meal_image: string,
+}
+
+export interface MealToAdd {
+    id: number,
+    items: number[],
+    name: string,
+    description: string,
+    numberOfPortions: number,
+    portionWeight: number,
+    caloriesPerPortion: number,
 }

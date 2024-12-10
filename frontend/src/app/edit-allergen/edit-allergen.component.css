@@ -1,18 +1,4 @@
-.main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    color: #f0f0f0;
-}
-
-.main-container h1 {
-    color: #4B3629;
-    font-size: 48px;
-}
-
-.main-container .form-container {
+ .form-container {
     color: #4B3629;
     background-color: #cdd9c7;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -26,17 +12,23 @@
     align-items: center;
 }
 
-.main-container .form-thing {
+ .form-thing {
     display: flex; 
     flex-direction: column; 
     align-items: center;
     padding: 10px;
 }
 
-.main-container .label {
+.form-buttons {
+    display: flex; 
+    align-items: center;
+    padding: 10px;
+}
+
+.label {
     padding: 5px;
     color:#4B3629;
-    font-weight: bold;
+    font-weight: bold !important;
     display: flex;
     justify-content: center;
     align-items: center; 
@@ -44,7 +36,7 @@
 }
 
 
-.main-container .btn-view {
+ .btn-view {
     background-color: #ECE8E4;
     color:#4B3629;
     padding: 10px;
@@ -52,8 +44,20 @@
     font-weight: bold;
     border-radius: 8px;
     border-color: #9C8F87;
+    margin-right:10px;
 }
 
-.main-container .btn-view:disabled {
+ .btn-view:disabled {
     cursor: not-allowed;
+}
+
+ .btn-view2 {
+    background-color: #B15D63;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    border-color: #4b3629;
+    margin-right: 10px;
 }

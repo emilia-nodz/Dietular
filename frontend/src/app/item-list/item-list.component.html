@@ -11,13 +11,23 @@
             @if(checker === item.id) { 
               <app-item-details [index]="$index"/>
             }
-            <button class="btn-view2" (click)="ShowConfirmation(item.id)"> Delete </button>
+            <button class="btn-view" (click)="update(item.id)"> Edit </button>
+              @if(updateChecker === item.id) {
+                <app-edit-item [index]="$index"></app-edit-item>
+              }
+            <button class="btn-view2" (click)="showConfirmation(item.id)"> Delete </button>
             
             @if(checkerfordelete === item.id) 
             {
-               <p><strong>Are you sure you want to delete {{item.name}}?</strong></p>
-               <button class="btn-view2" (click)="Delete(item.id)">Yes</button>
-               <button class="btn-view" (click)="Undo()">No</button>
+              <div class="form-container">
+                <div class="form-thing">
+                  <h3>Are you sure you want to delete {{item.name}}?</h3>
+                </div>
+                <div class="form-buttons">
+                  <button class="btn-view2" (click)="deleteThing(item.id)">Yes</button>
+                  <button class="btn-view" (click)="undo()">No</button>
+                </div>
+              </div>
             }
            
           </li>
