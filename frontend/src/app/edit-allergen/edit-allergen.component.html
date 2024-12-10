@@ -1,0 +1,7 @@
+@if(index !== undefined) {
+    <form [formGroup]="formModel" (ngSubmit)="submitForm()">
+        <label for="name">Allergen name:</label>
+        <input id="name" formControlName="name" />
+        <button type="submit">Save</button>
+    </form>
+}
