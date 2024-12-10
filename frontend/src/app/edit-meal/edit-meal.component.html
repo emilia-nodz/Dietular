@@ -24,7 +24,7 @@
           <input type="number" placeholder="Number of portions" formControlName="portionNo">
           @if(formModel.controls['portionNo'].errors?.['required']) {
             <span class="error">Value is required</span>
-          } @else if(formModel.controls['portionNo'].errors?.['min']!=null) {
+          } @else if(formModel.controls['portionNo'].hasError('positiveNumberValidator')) {
             <span class="error">Value must be a number grater than 0</span>
           }
         </div>
@@ -34,7 +34,7 @@
           <input type="number" placeholder="Weight of a portion (g)" formControlName="portionWe">
           @if(formModel.controls['portionWe'].errors?.['required']) {
             <span class="error">Value is required</span>
-          } @else if(formModel.controls['portionWe'].errors?.['min']!=null) {
+          } @else if(formModel.controls['portionWe'].hasError('positiveNumberValidator')) {
             <span class="error">Value must be a number grater than 0</span>
           }
         </div>
@@ -44,7 +44,7 @@
           <input type="number" placeholder="Calories per portion (kCal)" formControlName="portionCal">
           @if(formModel.controls['portionCal'].errors?.['required']) {
             <span class="error">Value is required</span>
-          } @else if(formModel.controls['portionCal'].errors?.['min']!=null) {
+          } @else if(formModel.controls['portionCal'].hasError('positiveNumberValidator')) {
             <span class="error">Value must be a number grater than 0</span>
           }
         </div>

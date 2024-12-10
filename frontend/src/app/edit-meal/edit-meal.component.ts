@@ -6,6 +6,7 @@ import { Meal } from '../models/meal.model';
 import { MealToAdd } from '../models/meal.model';
 import { ItemService } from '../services/item.service';
 import { Item } from '../models/item.model';
+import { positiveNumbersValidator } from '../numbers-validator';
 
 @Component({
   selector: 'app-edit-meal',
@@ -57,9 +58,9 @@ export class EditMealComponent {
     this.formModel = this.fb.group({
       name: new FormControl('',[ Validators.maxLength(50)]),
       desc: ['', Validators.required],
-      portionNo: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
-      portionWe: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
-      portionCal: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
+      portionNo: ['', [Validators.required, positiveNumbersValidator]],
+      portionWe: ['', [Validators.required, positiveNumbersValidator]],
+      portionCal: ['', [Validators.required, positiveNumbersValidator]],
       items: [[],],
     });
     

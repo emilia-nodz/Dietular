@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { MealService } from '../services/meal.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { positiveNumbersValidator } from '../numbers-validator';
 
 @Component({
   selector: 'app-add-meal',
@@ -33,9 +34,9 @@ export class AddMealComponent {
     this.formModel = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(50)]],
       desc: ['', Validators.required],
-      portionNo: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
-      portionWe: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
-      portionCal: ['', [Validators.required, Validators.min(Number.MIN_VALUE)]],
+      portionNo: ['', [Validators.required, positiveNumbersValidator]],
+      portionWe: ['', [Validators.required, positiveNumbersValidator]],
+      portionCal: ['', [Validators.required, positiveNumbersValidator]],
       items: [[],],
     });
   }
