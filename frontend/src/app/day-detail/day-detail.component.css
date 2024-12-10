@@ -45,7 +45,9 @@
     transform: translateY(0);
   }
 }
-
+img {
+  cursor: pointer;
+}
 @keyframes slideIn {
   from {
     opacity: 0;
