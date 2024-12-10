@@ -18,10 +18,14 @@
     <img src="http://localhost:8000/media/icons/circle-ellipsis.png"
          alt="Add item"
          (click)="itemClick()" />
-    <div *ngIf="showItemDropdown" class="dropdown">
-      <app-item-calendar-list (interest)="addItemToDay($event)">
-      </app-item-calendar-list>
-    </div>
+    @if (showItemDropdown){
+      <div class="dropdown">
+        <app-item-calendar-list
+          [assignedItems]="day.item_details || []" 
+          (interest)="addItemToDay($event)">
+        </app-item-calendar-list>
+      </div>
+    }
   </div>
 
   <div class="section">
@@ -37,8 +41,8 @@
   </div>
 
 
-<button (click)="saveDay()" [disabled]="saving">
-  {{ saving ? 'Saving...' : 'Save Day' }}
+<button (click)="saveDay()">
+  {{ 'Save Day' }}
 </button>
 </div>
 }

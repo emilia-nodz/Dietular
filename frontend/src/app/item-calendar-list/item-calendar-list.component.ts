@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item } from '../models/item.model';
 import { ItemService } from '../services/item.service';
@@ -12,14 +12,26 @@ import { ItemService } from '../services/item.service';
 })
 export class ItemListComponent {
   items: Item[] = [];
+  filteredItems: Item[] = [];
+  @Input() assignedItems: Item[] = []; 
   @Output() interest = new EventEmitter<Item>(); // Emit the entire Item object
 
   constructor(private itemService: ItemService) {
     this.itemService.getItems().subscribe((data: Item[]) => {
       this.items = data;
+      this.filterItems();
     });
   }
 
+  ngOnChanges(): void {
+    this.filterItems(); // Recalculate filteredItems when assignedItems changes
+  }
+
+  filterItems(): void {
+    this.filteredItems = this.items.filter(
+      item => !this.assignedItems.some(assigned => assigned.id === item.id)
+    );
+  }
   // Emit the selected item
   selectItem(item: Item): void {
     this.interest.emit(item);
