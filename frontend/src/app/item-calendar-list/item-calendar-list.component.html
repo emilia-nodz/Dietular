@@ -1,5 +1,5 @@
 <ul class="item-list">
-@for (item of items; track item){
+  @for (item of filteredItems; track item){
   <li class="item-entry" (click)="selectItem(item)">
     <img src="http://localhost:8000/media/icons/diamond-plus.png"
          alt="{{ item.name }}"

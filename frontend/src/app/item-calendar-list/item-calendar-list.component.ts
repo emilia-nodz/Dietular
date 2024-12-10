@@ -14,7 +14,7 @@ export class ItemListComponent {
   items: Item[] = [];
   filteredItems: Item[] = [];
   @Input() assignedItems: Item[] = []; 
-  @Output() interest = new EventEmitter<Item>(); // Emit the entire Item object
+  @Output() interest = new EventEmitter<Item>();
 
   constructor(private itemService: ItemService) {
     this.itemService.getItems().subscribe((data: Item[]) => {
@@ -24,7 +24,7 @@ export class ItemListComponent {
   }
 
   ngOnChanges(): void {
-    this.filterItems(); // Recalculate filteredItems when assignedItems changes
+    this.filterItems();
   }
 
   filterItems(): void {
@@ -32,7 +32,7 @@ export class ItemListComponent {
       item => !this.assignedItems.some(assigned => assigned.id === item.id)
     );
   }
-  // Emit the selected item
+
   selectItem(item: Item): void {
     this.interest.emit(item);
   }

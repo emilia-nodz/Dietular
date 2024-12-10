@@ -30,14 +30,29 @@
 
   <div class="section">
     <h4>Meals</h4>
-    <ul>
-      @for (meal of day.meals; track meal){
-      <li>{{meal}}</li>
+    <ul class="item-list">
+      @for (meal of day.meal_details; track meal){
+      <li class="item-entry">
+        <img src="http://localhost:8000/media/icons/diamond-minus.png"
+             alt="{{ meal.name }}"
+             class="item-icon" />
+        {{meal.name}}
+      </li>
       } @empty{
-      <li>There are no meals</li>
+      <li>There are no items</li>
       }
     </ul>
-    <img src="http://localhost:8000/media/icons/diamond-plus.png" alt="Add meal" />
+    <img src="http://localhost:8000/media/icons/circle-ellipsis.png"
+         alt="Add item"
+         (click)="mealClick()" />
+    @if (showMealDropdown){
+    <div class="dropdown">
+      <app-meal-calendar-list
+        [assignedMeals]="day.meal_details || []"
+        (interest)="addMealToDay($event)">
+      </app-meal-calendar-list>
+    </div>
+    }
   </div>
 
 
