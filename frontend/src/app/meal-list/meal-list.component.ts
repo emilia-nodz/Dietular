@@ -35,7 +35,7 @@ export class MealListComponent {
 
   deleteThing(itemid: number) {
     console.log("Zaraz usuniemy " + itemid)
-    this.mealService.delete(itemid)
+    this.mealService.deleteMeal(itemid)
     .subscribe()
     location.reload();
   }

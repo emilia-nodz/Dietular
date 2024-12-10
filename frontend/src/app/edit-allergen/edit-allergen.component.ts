@@ -69,6 +69,8 @@ export class EditAllergenComponent {
   }
 
   cancel() {
-    this.editInList.emit(this.editAllergen);
+    this.formModel.patchValue({ name: this.oldAllergen.name });
+
+    this.editInList.emit();
   }
 }

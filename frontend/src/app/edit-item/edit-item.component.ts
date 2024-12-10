@@ -91,6 +91,14 @@ export class EditItemComponent {
   }
 
   cancel() {
-    this.editInList.emit(this.editItem);
+    this.formModel.patchValue({ name: this.oldItem.name });
+    this.formModel.patchValue({ desc: this.oldItem.description });
+    this.formModel.patchValue({ weight: this.oldItem.weight });
+    this.formModel.patchValue({ cal: this.oldItem.calories });
+    this.formModel.patchValue({ protein: this.oldItem.proteins });
+    this.formModel.patchValue({ carbs: this.oldItem.carbohydrates });
+    this.formModel.patchValue({ fats: this.oldItem.fats });
+
+    this.editInList.emit();
   }
 }

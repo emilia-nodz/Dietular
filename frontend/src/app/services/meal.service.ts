@@ -21,6 +21,15 @@ export class MealService {
     );
   }
 
+  getMealsToAdd(): Observable<MealToAdd[]> {
+    return this.http.get<MealToAdd[]>(this.apiUrl).pipe(
+      catchError(error => {
+        console.error('Error getting meals:', error);
+        return throwError(() => new Error('Error getting meals'));
+      })
+    );
+  }
+
   addMeal(MealToAdd: MealToAdd): Observable<Meal> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -33,7 +42,7 @@ export class MealService {
     );
   }
 
-  delete(Id: number): Observable<void> {
+  deleteMeal(Id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}${Id}/`).pipe(
       catchError(error => {
         console.error('Error deleting meal:', error);
