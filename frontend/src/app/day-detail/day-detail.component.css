@@ -69,3 +69,15 @@
     transform: scale(1);
   }
 }
+
+.btn-view {
+  background-color: #ECE8E4;
+  color:#4B3629;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  border-color: #4b3629;
+  margin-top:10px;
+}
+
